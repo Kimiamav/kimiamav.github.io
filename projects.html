@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Projets – Kimia Mavinga</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body data-page="projects">
+    <header>
+      <div class="wrapper navbar">
+        <div class="logo">Kimia <span>Mavinga</span></div>
+        <nav class="nav-links">
+          <a href="index.html" data-page="home">Accueil</a>
+          <a href="about.html" data-page="about">À propos</a>
+          <a href="projects.html" data-page="projects">Projets</a>
+          <a href="stages.html" data-page="stages">Stages</a>
+          <a href="contact.html" data-page="contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="wrapper">
+        <div class="section-header">
+          <p class="section-kicker">Réalisations</p>
+          <h1 class="section-title">Mes projets</h1>
+        </div>
+
+        <div class="projects-grid">
+          <!-- PROJET SLAM : GESTTRAVAUX PRO -->
+          <article class="card project-card">
+            <h3>GestTravaux Pro – Gestion de travaux immobiliers</h3>
+            <p class="project-meta">
+              Rôle : Développeuse – Projet SLAM 2<sup>e</sup> année (2025–2026)
+            </p>
+            <p>
+              Application complète pour la société fictive <strong>IMMOSYNC</strong>, permettant
+              de gérer les chantiers de travaux immobiliers (création de chantier,
+              appels d’offres, devis, suivi des travaux, réception, rapports).
+            </p>
+            <ul style="margin-top: 0.7rem; font-size: 0.9rem">
+              <li>
+                <strong>Architecture hybride</strong> :
+                application desktop Java pour les gestionnaires + application web Symfony
+                (inspecteurs, entrepreneurs, propriétaires).
+              </li>
+              <li>
+                <strong>Base de données MySQL</strong> unique partagée (Hibernate côté Java,
+                Doctrine côté Symfony).
+              </li>
+              <li>
+                Gestion du cycle de vie complet des chantiers, comparaison de devis,
+                suivi d’avancement et génération de rapports PDF.
+              </li>
+              <li>
+                PWA pour les inspecteurs sur le terrain (photos, diagnostics, documents).
+              </li>
+            </ul>
+
+            <div class="project-tags">
+              <span class="tag">Symfony 7</span>
+              <span class="tag">Java / JavaFX</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Hibernate</span>
+              <span class="tag">Doctrine ORM</span>
+              <span class="tag">PWA</span>
+              <span class="tag">Projet SLAM</span>
+            </div>
+
+            <div style="margin-top: 0.9rem; font-size: 0.85rem">
+              <!-- Remplace # par ton lien GitHub quand tu l’auras -->
+              <a href="#" target="_blank">Voir le dépôt GitHub (à venir)</a>
+            </div>
+          </article>
+
+          <!-- PROJET 2 : Déploiement LUCCA -->
+          <article class="card project-card">
+            <h3>Déploiement de la solution RH Lucca</h3>
+            <p class="project-meta">
+              Rôle : Stagiaire gestion de projet IT – SCOR (2025)
+            </p>
+            <p>
+              Participation au déploiement de la solution SaaS <strong>Lucca</strong> et à
+              son intégration avec le SIRH <strong>Oracle HCM</strong> au sein d’un groupe
+              international de réassurance.
+            </p>
+            <ul style="margin-top: 0.7rem; font-size: 0.9rem">
+              <li>Analyse du périmètre fonctionnel de l’application.</li>
+              <li>Mapping des données entre Lucca et Oracle HCM.</li>
+              <li>Configuration et tests fonctionnels (utilisateurs pilotes).</li>
+              <li>Rédaction de documentation utilisateur et technique.</li>
+            </ul>
+            <div class="project-tags">
+              <span class="tag">SaaS</span>
+              <span class="tag">RH</span>
+              <span class="tag">Tests</span>
+              <span class="tag">Documentation</span>
+            </div>
+          </article>
+
+          <!-- PROJET 3 : Gestion de tâches (scolaire) -->
+          <article class="card project-card">
+            <h3>Application de gestion de tâches</h3>
+            <p class="project-meta">Rôle : Projet scolaire – BTS SIO SLAM</p>
+            <p>
+              Application web permettant aux utilisateurs de créer, modifier et suivre
+              des tâches avec une gestion des comptes et des droits.
+            </p>
+            <ul style="margin-top: 0.7rem; font-size: 0.9rem">
+              <li>CRUD complet sur une base de données SQL.</li>
+              <li>Authentification et gestion de rôles simples.</li>
+              <li>Interface responsive en HTML / CSS.</li>
+            </ul>
+            <div class="project-tags">
+              <span class="tag">PHP</span>
+              <span class="tag">SQL</span>
+              <span class="tag">HTML / CSS</span>
+            </div>
+            <div style="margin-top: 0.9rem; font-size: 0.85rem">
+              <a href="#" target="_blank">Voir le projet sur GitHub (à venir)</a>
+            </div>
+          </article>
+
+          <!-- PROJET 4 : Mini appli Java -->
+          <article class="card project-card">
+            <h3>Mini-application Java (projet perso)</h3>
+            <p class="project-meta">Rôle : Projet personnel</p>
+            <p>
+              Application Java console permettant de manipuler des listes (ajout,
+              tri, recherche) pour s’entraîner à la programmation orientée objet.
+            </p>
+            <ul style="margin-top: 0.7rem; font-size: 0.9rem">
+              <li>Utilisation de classes, objets et collections.</li>
+              <li>Gestion des entrées utilisateurs et des erreurs.</li>
+            </ul>
+            <div class="project-tags">
+              <span class="tag">Java</span>
+              <span class="tag">POO</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrapper">
+        © 2025 – Kimia Mavinga · Portfolio BTS SIO SLAM
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
