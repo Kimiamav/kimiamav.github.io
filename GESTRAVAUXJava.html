@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GestTravaux Pro — Version Web</title>
+  <title>GestTravaux Pro — Version Java</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -397,57 +397,57 @@
   <div class="page-shell">
 
     <header class="hero reveal">
-      <p class="hero-kicker">PROJET SCOLAIRE — VERSION WEB</p>
-      <h1>GestTravaux Pro — Symfony</h1>
+      <p class="hero-kicker">PROJET SCOLAIRE — VERSION DESKTOP</p>
+      <h1>GestTravaux Pro — JavaFX</h1>
       <p>
-        GestTravaux Pro est une application web développée pour digitaliser la gestion de travaux immobiliers.
-        Cette version Symfony est pensée pour les usages web et mobiles : suivi des chantiers par les inspecteurs,
-        consultation des demandes par les entrepreneurs, accès ponctuel des propriétaires et administration distante.
+        GestTravaux Pro en version Java est une application desktop destinée à la gestion centralisée
+        des travaux immobiliers. Elle est pensée pour les usages de pilotage, d’administration et
+        de traitement complet des dossiers chantier avec une logique de bureau plus poussée.
       </p>
       <div class="hero-tags">
-        <span class="hero-tag">Symfony 7</span>
-        <span class="hero-tag">Doctrine ORM</span>
-        <span class="hero-tag">Twig</span>
+        <span class="hero-tag">Java</span>
+        <span class="hero-tag">JavaFX</span>
+        <span class="hero-tag">Hibernate</span>
+        <span class="hero-tag">MVC</span>
         <span class="hero-tag">MySQL</span>
-        <span class="hero-tag">Responsive</span>
-        <span class="hero-tag">PWA</span>
+        <span class="hero-tag">PDF</span>
       </div>
     </header>
 
     <section class="section reveal">
       <div class="section-title-wrap">
         <p class="section-kicker">VUE D’ENSEMBLE</p>
-        <h2 class="section-title">Rôle de la version web</h2>
+        <h2 class="section-title">Rôle de la version Java</h2>
         <p class="section-subtitle">
-          L’application web couvre les usages distants et terrain. Elle complète la version Java desktop,
-          tout en partageant la même base de données MySQL afin de centraliser les informations liées aux
-          biens, chantiers, devis, documents et acteurs du système.
+          La version desktop est conçue pour une utilisation plus complète côté gestionnaire.
+          Elle permet de manipuler les dossiers, structurer les informations, comparer les devis,
+          gérer les entreprises et suivre l’ensemble des opérations liées à un chantier.
         </p>
       </div>
 
       <div class="overview-grid">
         <article class="card overview-card">
-          <div class="overview-icon">👷</div>
-          <span class="overview-value">Inspecteur</span>
-          <p class="overview-label">consultation des chantiers, observations terrain, documents et photos</p>
+          <div class="overview-icon">💼</div>
+          <span class="overview-value">Desktop</span>
+          <p class="overview-label">application métier orientée gestion interne et pilotage complet</p>
         </article>
 
         <article class="card overview-card">
-          <div class="overview-icon">📄</div>
-          <span class="overview-value">Entrepreneur</span>
-          <p class="overview-label">consultation du devis type et soumission d’une proposition</p>
+          <div class="overview-icon">🧱</div>
+          <span class="overview-value">MVC</span>
+          <p class="overview-label">séparation des responsabilités entre interface, logique et données</p>
         </article>
 
         <article class="card overview-card">
-          <div class="overview-icon">🏠</div>
-          <span class="overview-value">Propriétaire</span>
-          <p class="overview-label">suivi ponctuel du chantier et consultation des informations utiles</p>
+          <div class="overview-icon">🗄</div>
+          <span class="overview-value">Hibernate</span>
+          <p class="overview-label">persistance des données et mapping objet-relationnel</p>
         </article>
 
         <article class="card overview-card">
-          <div class="overview-icon">⚙</div>
-          <span class="overview-value">Admin</span>
-          <p class="overview-label">interface d’administration et gestion applicative à distance</p>
+          <div class="overview-icon">📑</div>
+          <span class="overview-value">PDF</span>
+          <p class="overview-label">édition et génération de documents exploitables dans le dossier</p>
         </article>
       </div>
     </section>
@@ -455,30 +455,29 @@
     <section class="section reveal">
       <div class="section-title-wrap">
         <p class="section-kicker">PRÉSENTATION</p>
-        <h2 class="section-title">Architecture et choix techniques</h2>
+        <h2 class="section-title">Architecture et logique de l’application</h2>
       </div>
 
       <div class="content-grid">
         <article class="card text-card">
-          <h3>Objectif de l’application</h3>
+          <h3>Objectif de la version Java</h3>
           <p>
-            Le projet répond à une problématique de gestion manuelle des travaux immobiliers :
-            perte de temps, manque de traçabilité, échanges dispersés et suivi difficile de plusieurs
-            chantiers en parallèle. La version web vise donc à fluidifier la circulation des informations,
-            à faciliter la mobilité terrain et à permettre aux différents acteurs d’interagir avec le dossier
-            chantier depuis une interface claire et accessible.
+            Cette application répond à un besoin de gestion métier plus approfondi que la version web.
+            L’idée est d’offrir à l’utilisateur principal une interface de bureau permettant de consulter
+            les dossiers, enregistrer les informations clés, traiter les devis, piloter les entreprises
+            intervenantes et assurer un suivi structuré des étapes du chantier.
           </p>
         </article>
 
         <article class="card feature-card">
           <h3>Socle technique</h3>
           <div class="stack-list">
-            <div class="stack-item"><strong>Framework :</strong> Symfony 7</div>
-            <div class="stack-item"><strong>ORM :</strong> Doctrine</div>
-            <div class="stack-item"><strong>Templates :</strong> Twig responsive</div>
-            <div class="stack-item"><strong>Base :</strong> MySQL partagée avec la version Java</div>
-            <div class="stack-item"><strong>Fonctions attendues :</strong> multi-rôles, validation, upload de fichiers</div>
-            <div class="stack-item"><strong>Approche :</strong> accès web / mobile avec logique orientée terrain</div>
+            <div class="stack-item"><strong>Langage :</strong> Java</div>
+            <div class="stack-item"><strong>Interface :</strong> JavaFX</div>
+            <div class="stack-item"><strong>Architecture :</strong> MVC</div>
+            <div class="stack-item"><strong>Persistance :</strong> Hibernate / JPA</div>
+            <div class="stack-item"><strong>Base de données :</strong> MySQL</div>
+            <div class="stack-item"><strong>Sorties :</strong> export ou génération de documents PDF</div>
           </div>
         </article>
       </div>
@@ -487,53 +486,51 @@
     <section class="section reveal">
       <div class="section-title-wrap">
         <p class="section-kicker">FONCTIONNALITÉS</p>
-        <h2 class="section-title">Fonctions principales de la version Symfony</h2>
+        <h2 class="section-title">Fonctions principales de la version desktop</h2>
       </div>
 
       <div class="usage-grid">
         <article class="card usage-card">
           <span class="usage-number">1</span>
-          <h3>Interface inspecteur mobile</h3>
+          <h3>Gestion des dossiers chantier</h3>
           <ul>
-            <li>Consultation des chantiers assignés</li>
-            <li>Localisation du bien immobilier</li>
-            <li>Saisie des observations avec formulaires adaptatifs</li>
-            <li>Ajout de photos de terrain</li>
-            <li>Dépôt de documents : DPE, diagnostic bruit, etc.</li>
+            <li>Création et consultation des dossiers</li>
+            <li>Suivi des informations liées aux biens immobiliers</li>
+            <li>Historique et centralisation des données métier</li>
+            <li>Vision complète du chantier dans une interface bureau</li>
           </ul>
         </article>
 
         <article class="card usage-card">
           <span class="usage-number">2</span>
-          <h3>Espace entrepreneur</h3>
+          <h3>Gestion des devis</h3>
           <ul>
-            <li>Dashboard personnalisé avec la liste des demandes reçues</li>
-            <li>Consultation détaillée du devis type</li>
-            <li>Formulaire de soumission avec validation Symfony</li>
-            <li>Suivi du statut des propositions déposées</li>
+            <li>Consultation des propositions reçues</li>
+            <li>Comparaison des devis entre entreprises</li>
+            <li>Aide à la sélection d’une offre</li>
+            <li>Suivi des statuts et de l’avancement administratif</li>
           </ul>
         </article>
 
         <article class="card usage-card">
           <span class="usage-number">3</span>
-          <h3>Gestion applicative</h3>
+          <h3>Gestion des entreprises et acteurs</h3>
           <ul>
-            <li>Authentification multi-rôles</li>
-            <li>Accès différencié selon le profil utilisateur</li>
-            <li>Administration distante</li>
-            <li>Consultation centralisée des données métier</li>
+            <li>Référencement des entreprises intervenantes</li>
+            <li>Association d’une entreprise à un dossier</li>
+            <li>Organisation des rôles métier</li>
+            <li>Structuration des relations entre acteurs du projet</li>
           </ul>
         </article>
 
         <article class="card usage-card">
           <span class="usage-number">4</span>
-          <h3>Qualité et structure technique</h3>
+          <h3>Production documentaire</h3>
           <ul>
-            <li>Entités mappées avec Doctrine</li>
-            <li>Contrôleurs avec injection de dépendances</li>
-            <li>Templates Twig avec héritage</li>
-            <li>Upload de fichiers et validation de formulaires</li>
-            <li>Tests PHPUnit prévus dans les attendus</li>
+            <li>Préparation de synthèses exploitables</li>
+            <li>Édition ou génération de documents PDF</li>
+            <li>Valorisation des informations clés du dossier</li>
+            <li>Approche pratique pour la restitution métier</li>
           </ul>
         </article>
       </div>
@@ -544,48 +541,48 @@
         <p class="section-kicker">PREUVES</p>
         <h2 class="section-title">Captures du projet</h2>
         <p class="section-subtitle">
-          J’ai laissé des emplacements pour insérer ensuite tes vraies captures d’écran du projet web.
+          J’ai laissé des zones où tu pourras mettre tes vraies captures de l’application Java.
         </p>
       </div>
 
       <div class="proofs-grid">
         <article class="card proof-card">
           <span class="proof-label">Preuve 1</span>
-          <h3>Dashboard inspecteur</h3>
-          <p>Zone prévue pour une capture de la page d’accueil ou de la liste des chantiers assignés.</p>
+          <h3>Interface d’accueil JavaFX</h3>
+          <p>Zone prévue pour une capture de la fenêtre principale ou du menu de navigation.</p>
           <div class="proof-box">
             Ajoute ici une capture<br>
-            de l’interface inspecteur
+            de l’interface JavaFX
           </div>
         </article>
 
         <article class="card proof-card">
           <span class="proof-label">Preuve 2</span>
-          <h3>Formulaire chantier / observations</h3>
-          <p>Zone prévue pour une capture du formulaire de saisie, des observations ou du dépôt de documents.</p>
+          <h3>Gestion des dossiers</h3>
+          <p>Zone prévue pour illustrer la création, la consultation ou la modification d’un dossier chantier.</p>
           <div class="proof-box">
             Ajoute ici une capture<br>
-            du formulaire Symfony
+            de la gestion des dossiers
           </div>
         </article>
 
         <article class="card proof-card">
           <span class="proof-label">Preuve 3</span>
-          <h3>Espace entrepreneur</h3>
-          <p>Zone prévue pour montrer la consultation du devis type ou la soumission d’une proposition.</p>
+          <h3>Comparateur ou suivi des devis</h3>
+          <p>Zone prévue pour montrer le traitement des devis ou le choix entre plusieurs propositions.</p>
           <div class="proof-box">
             Ajoute ici une capture<br>
-            de l’espace entrepreneur
+            du comparateur de devis
           </div>
         </article>
 
         <article class="card proof-card">
           <span class="proof-label">Preuve 4</span>
-          <h3>Gestion des documents / photos</h3>
-          <p>Zone prévue pour illustrer l’upload de fichiers, les justificatifs ou les photos liées au chantier.</p>
+          <h3>Export / document PDF</h3>
+          <p>Zone prévue pour un aperçu de document généré ou une page de synthèse du dossier.</p>
           <div class="proof-box">
             Ajoute ici une capture<br>
-            des preuves documentaires
+            d’un document ou export PDF
           </div>
         </article>
       </div>
@@ -601,18 +598,18 @@
         <article class="card text-card">
           <h3>Apport fonctionnel</h3>
           <p>
-            La version web de GestTravaux Pro apporte de la mobilité, une meilleure centralisation des échanges
-            et une saisie plus directe des informations de chantier. Elle facilite la relation entre le terrain,
-            les entrepreneurs et le suivi administratif du dossier.
+            La version Java met davantage l’accent sur le pilotage des dossiers, la structuration des
+            données et le traitement administratif des informations. Elle représente la partie la plus
+            “gestionnaire” du projet GestTravaux Pro.
           </p>
         </article>
 
         <article class="card text-card">
           <h3>Apport technique</h3>
           <p>
-            Ce projet met en valeur l’utilisation d’un framework PHP moderne, la modélisation de données via ORM,
-            la gestion de profils utilisateurs, les formulaires sécurisés, l’intégration de fichiers et
-            l’organisation d’une application web connectée à une base commune avec une seconde application Java.
+            Ce projet valorise le développement orienté objet en Java, la construction d’interfaces
+            desktop avec JavaFX, l’architecture MVC, la connexion à une base MySQL, la persistance
+            avec Hibernate et la production de documents métiers.
           </p>
         </article>
       </div>
