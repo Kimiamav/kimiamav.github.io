@@ -1,0 +1,2 @@
+le logiciel Apache TOMCAT est une implémentation open source des spécification du Jakarta Servlet, des pages , du langage d'expression, des annotation et des spécifications d'authentification de Jakarta, Ces spécifiques font partie de  la plateforme Jakarta EE. 
+Cette plateforme est une évolution de Java EE 

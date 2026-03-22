@@ -1,0 +1,12 @@
+package com.scor.peopledoc.exception;
+
+public class GetScheduledReportOutputInfoException extends ScheduleException{
+    /**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = -6110723352929976765L;
+
+	public GetScheduledReportOutputInfoException() {
+        super();
+    }
+}

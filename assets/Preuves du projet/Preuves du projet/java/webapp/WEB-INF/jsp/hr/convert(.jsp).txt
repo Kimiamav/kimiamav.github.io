@@ -1,0 +1,100 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Convert - ADP 2P PeopleDoc</title>
+    <link rel="stylesheet" href="../resources/css/hr.css">
+</head>
+<body>
+
+<div class="page">
+    <div class="card">
+        <div class="header">
+            <h1>Convert</h1>
+        </div>
+
+        <div class="content">
+            <div class="panel">
+
+                <div class="alert success">
+                    <div class="check">✓</div>
+                    <div>
+                        La conversion du fichier <b>${fileName}</b> pour <b>(${country})</b> a été réalisée avec succès.
+                    </div>
+                </div>
+
+                <div style="height:14px;"></div>
+
+                <div class="infoLine">
+                    <div class="k">Fichier:</div>
+                    <div class="v">${fileName}</div>
+                </div>
+
+                <div class="infoLine">
+                    <div class="k">Pays:</div>
+                    <div class="v">${country}</div>
+                </div>
+
+                <a class="btn btn-primary" href="${pageContext.request.contextPath}/hr/uploadfile">
+                    Convertir un autre fichier
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Convert - ADP 2P PeopleDoc</title>
+    <link rel="stylesheet" href="../resources/css/hr.css">
+</head>
+<body>
+
+<div class="page">
+    <div class="card">
+        <div class="header">
+            <h1>Convert</h1>
+        </div>
+
+        <div class="content">
+            <div class="panel">
+
+                <div class="alert success">
+                    <div class="check">✓</div>
+                    <div>
+                        La conversion du fichier <b>${fileName}</b> pour <b>(${country})</b> a été réalisée avec succès.
+                    </div>
+                </div>
+
+                <div style="height:14px;"></div>
+
+                <div class="infoLine">
+                    <div class="k">Fichier:</div>
+                    <div class="v">${fileName}</div>
+                </div>
+
+                <div class="infoLine">
+                    <div class="k">Pays:</div>
+                    <div class="v">${country}</div>
+                </div>
+
+                <a class="btn btn-primary" href="${pageContext.request.contextPath}/hr/uploadfile">
+                    Convertir un autre fichier
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

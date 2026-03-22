@@ -1,0 +1,43 @@
+package com.scor.peopledoc.config;
+
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+@Getter
+@Setter
+@ConfigurationProperties(prefix = "peopletodoc", ignoreUnknownFields = false)
+public class ApplicationProperties {
+    @NotNull
+    @NotBlank
+    private String rootPath;
+
+    @NotNull
+    @NotBlank
+    private String outputPath;
+
+    @NotNull
+    @NotBlank
+    private String docByCountryPath;
+
+    @NotNull
+    @NotBlank
+    private String bulSalServiceUrl;
+
+    @NotNull
+    @NotBlank
+    private String userId;
+
+    @NotNull
+    @NotBlank
+    private String password;
+
+    @NotNull
+    @NotBlank
+    private String reportAbsolutePath;
+
+    private int iterationCount = 20;
+}

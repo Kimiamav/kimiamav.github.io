@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapport de stage SCOR 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #eef5fb;
+      --card: #ffffff;
+      --text: #102867;
+      --text-soft: #5e6f93;
+      --blue-1: #041b88;
+      --blue-2: #2f7de8;
+      --blue-3: #5fb7d9;
+      --blue-4: #dfeeff;
+      --shadow: 0 18px 40px rgba(15, 35, 92, 0.10);
+      --shadow-hover: 0 26px 46px rgba(15, 35, 92, 0.16);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(95,183,217,0.10), transparent 25%),
+        radial-gradient(circle at top right, rgba(47,125,232,0.10), transparent 20%),
+        var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .page-shell {
+      width: min(1280px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 26px 0 80px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 40px 52px;
+      border-radius: 0 0 34px 34px;
+      background: linear-gradient(135deg, #0d2e9b 0%, #041b88 55%, #1337ac 100%);
+      color: #fff;
+      box-shadow: var(--shadow);
+      margin-bottom: 38px;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -10%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.16), transparent 20%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.10), transparent 18%),
+        linear-gradient(120deg, rgba(255,255,255,0.10), transparent 40%);
+      animation: heroGlow 10s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes heroGlow {
+      0% { transform: translateX(0) translateY(0) scale(1); }
+      50% { transform: translateX(-2%) translateY(2%) scale(1.04); }
+      100% { transform: translateX(0) translateY(0) scale(1); }
+    }
+
+    .hero-kicker {
+      margin: 0 0 12px;
+      font-size: 0.92rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      max-width: 860px;
+      margin: 18px 0 0;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .hero-tag {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.14);
+      font-size: 0.92rem;
+      font-weight: 700;
+      backdrop-filter: blur(6px);
+    }
+
+    .section {
+      margin-top: 34px;
+    }
+
+    .section-title-wrap {
+      margin-bottom: 22px;
+    }
+
+    .section-kicker {
+      margin: 0 0 8px;
+      color: #5f84df;
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0 0 10px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text);
+    }
+
+    .section-subtitle {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.7;
+      max-width: 860px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+      border: 1px solid rgba(47,125,232,0.06);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .summary-card {
+      padding: 28px 24px;
+    }
+
+    .summary-card h3 {
+      margin: 0 0 18px;
+      color: var(--text);
+      font-size: 1.55rem;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 28px;
+    }
+
+    .summary-grid a {
+      text-decoration: none;
+      color: #35517a;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .summary-grid a:hover {
+      color: var(--blue-1);
+      transform: translateX(4px);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .stat-card {
+      padding: 24px 18px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% -40% auto;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(95,183,217,0.14), transparent 70%);
+      pointer-events: none;
+    }
+
+    .stat-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+      background: linear-gradient(135deg, #eef6ff, #dce9ff);
+      color: #1f62cc;
+      font-weight: 800;
+    }
+
+    .stat-value {
+      display: block;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: #1684b7;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      color: #34476f;
+      line-height: 1.55;
+      font-size: 1rem;
+    }
+
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .activity-card {
+      overflow: hidden;
+    }
+
+    .activity-image {
+      height: 220px;
+      background: linear-gradient(135deg, #b7dcf8, #dfeeff);
+    }
+
+    .activity-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .activity-content {
+      padding: 24px;
+    }
+
+    .activity-content h3 {
+      margin: 0 0 14px;
+      font-size: 1.55rem;
+      color: var(--text);
+    }
+
+    .activity-content p {
+      margin: 0 0 18px;
+      color: var(--text-soft);
+      line-height: 1.75;
+    }
+
+    .dashboard-board {
+      padding: 24px;
+    }
+
+    .dashboard-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .dashboard-head h3 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: var(--text);
+    }
+
+    .dashboard-head span {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #1684b7;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 18px;
+    }
+
+    .mini-panel {
+      background: #f9fbff;
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: inset 0 0 0 1px rgba(47,125,232,0.06);
+    }
+
+    .mini-panel h4 {
+      margin: 0 0 14px;
+      text-align: center;
+      font-size: 1rem;
+      color: #214c9d;
+    }
+
+    .bar-chart {
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      gap: 16px;
+      height: 220px;
+      padding: 10px 6px 6px;
+    }
+
+    .bar-col {
+      width: 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: end;
+      gap: 8px;
+    }
+
+    .bar-fill {
+      width: 100%;
+      border-radius: 14px 14px 0 0;
+      background: linear-gradient(180deg, #86d2a6, #2d7c3f);
+      box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.08);
+      transform-origin: bottom;
+      transform: scaleY(0);
+    }
+
+    .bar-label {
+      font-size: 0.9rem;
+      color: #38506f;
+      font-weight: 700;
+    }
+
+    .pie-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .pie {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: conic-gradient(
+        #2f7de8 0 40%,
+        #6ab57a 40% 74%,
+        #b8d9f0 74% 100%
+      );
+      box-shadow: inset 0 0 0 26px #fff;
+    }
+
+    .legend {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .legend li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #3e5576;
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .legend-1 { background: #2f7de8; }
+    .legend-2 { background: #6ab57a; }
+    .legend-3 { background: #b8d9f0; }
+
+    .ratings {
+      display: grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .rating-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 14px;
+      padding: 12px 14px;
+      background: #f4f8fd;
+      color: #395270;
+    }
+
+    .rating-row strong {
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .kpi-card {
+      padding: 20px 16px;
+      text-align: center;
+    }
+
+    .kpi-card h5 {
+      margin: 0 0 10px;
+      color: #597091;
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    .kpi-card p {
+      margin: 0;
+      color: #1684b7;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .swot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .swot-card {
+      position: relative;
+      padding: 24px;
+      color: white;
+      overflow: hidden;
+    }
+
+    .swot-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% -25% auto;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(255,255,255,0.12), transparent 68%);
+      pointer-events: none;
+    }
+
+    .swot-card h3 {
+      margin: 0 0 14px;
+      font-size: 1.4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .swot-card ul {
+      margin: 0;
+      padding-left: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .swot-card li {
+      margin-bottom: 10px;
+      line-height: 1.65;
+    }
+
+    .swot-badge {
+      position: absolute;
+      right: 18px;
+      top: 10px;
+      font-size: 4rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.16);
+      line-height: 1;
+    }
+
+    .swot-strength { background: linear-gradient(135deg, #2f7de8, #041b88); }
+    .swot-weakness { background: linear-gradient(135deg, #5070db, #2749b8); }
+    .swot-opportunity { background: linear-gradient(135deg, #4aa9d9, #2f7de8); }
+    .swot-threat { background: linear-gradient(135deg, #8b6ee0, #5a58d6); }
+
+    .compliance-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .compliance-card {
+      padding: 22px 18px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .compliance-icon {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #dce9ff, #eef6ff);
+      color: #2f7de8;
+      font-weight: 800;
+    }
+
+    .compliance-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .compliance-card p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.65;
+    }
+
+    .missions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .mission-card {
+      padding: 24px;
+      position: relative;
+    }
+
+    .mission-number {
+      position: absolute;
+      right: 18px;
+      top: 16px;
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(47,125,232,0.14);
+      line-height: 1;
+    }
+
+    .mission-card h3 {
+      margin: 0 0 14px;
+      color: var(--text);
+      font-size: 1.35rem;
+    }
+
+    .mission-card p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.75;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .text-card {
+      padding: 24px;
+    }
+
+    .text-card h3 {
+      margin: 0 0 12px;
+      color: var(--text);
+      font-size: 1.35rem;
+    }
+
+    .text-card p {
+      margin: 0 0 14px;
+      color: var(--text-soft);
+      line-height: 1.75;
+    }
+
+    .text-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .proofs {
+      margin-top: 18px;
+    }
+
+    .proofs-title {
+      margin: 0 0 16px;
+      color: var(--text);
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .proofs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .proof-card {
+      overflow: hidden;
+    }
+
+    .proof-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(135deg, #b7dcf8, #dfeeff);
+    }
+
+    .proof-caption {
+      padding: 14px 16px 18px;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    .footer-back {
+      margin-top: 54px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 2px solid var(--blue-1);
+      color: var(--blue-1);
+      background: transparent;
+      transition: 0.22s ease;
+    }
+
+    .back-btn:hover {
+      background: var(--blue-1);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1100px) {
+      .stats-grid,
+      .activities-grid,
+      .dashboard-grid,
+      .kpi-grid,
+      .compliance-grid,
+      .missions-grid,
+      .two-col,
+      .proofs-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .stats-grid,
+      .activities-grid,
+      .dashboard-grid,
+      .kpi-grid,
+      .swot-grid,
+      .compliance-grid,
+      .missions-grid,
+      .two-col,
+      .proofs-grid,
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-shell {
+        width: min(100% - 22px, 1200px);
+      }
+
+      .hero {
+        padding: 56px 22px 42px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+
+    <header class="hero reveal">
+      <p class="hero-kicker">RAPPORT DE STAGE</p>
+      <h1>SCOR — Stage 2026</h1>
+      <p>
+        Expérience réalisée au sein de l’environnement Corporate IT autour du développement backend,
+        de l’automatisation de la distribution de documents, du traitement XML et de l’intégration de données
+        via Java, Spring Boot, JPA, XSD et PeopleDoc.
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">Java</span>
+        <span class="hero-tag">Spring Boot</span>
+        <span class="hero-tag">JPA</span>
+        <span class="hero-tag">XML</span>
+        <span class="hero-tag">XSD</span>
+        <span class="hero-tag">PeopleDoc</span>
+        <span class="hero-tag">SOAP</span>
+        <span class="hero-tag">Backend</span>
+      </div>
+    </header>
+
+    <section class="section reveal" id="sommaire">
+      <div class="card summary-card">
+        <h3>Sommaire</h3>
+        <div class="summary-grid">
+          <a href="#remerciements">1. Remerciements</a>
+          <a href="#introduction">2. Introduction</a>
+          <a href="#presentation">3. Présentation de l’organisme d’accueil</a>
+          <a href="#swot">4. Analyse SWOT</a>
+          <a href="#contexte">5. Contexte du stage</a>
+          <a href="#competences">6. Compétences mobilisées et acquises</a>
+          <a href="#missions">7. Missions réalisées</a>
+          <a href="#difficultes">8. Difficultés rencontrées</a>
+          <a href="#conclusion">9. Conclusion</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="remerciements">
+      <div class="section-title-wrap">
+        <p class="section-kicker">01</p>
+        <h2 class="section-title">Remerciements</h2>
+      </div>
+
+      <article class="card text-card">
+        <p>Je tiens à remercier l’ensemble de l’équipe informatique de SCOR pour son accueil, sa disponibilité et son accompagnement tout au long de mon stage.</p>
+        <p>Je remercie plus particulièrement mon tuteur, Corporate IT Crew Lead, pour ses conseils, son suivi et la confiance qu’il m’a accordée pendant mes missions.</p>
+        <p>Je remercie également les membres de l’équipe avec lesquels j’ai pu échanger au quotidien. Leur aide m’a permis de mieux comprendre l’environnement technique de l’entreprise et de progresser dans ma pratique du développement.</p>
+        <p>Enfin, je remercie mon établissement et mes enseignants pour leur accompagnement dans le cadre de cette expérience professionnelle.</p>
+      </article>
+    </section>
+
+    <section class="section reveal" id="introduction">
+      <div class="section-title-wrap">
+        <p class="section-kicker">02</p>
+        <h2 class="section-title">Introduction</h2>
+      </div>
+
+      <article class="card text-card">
+        <p>Dans le cadre de ma formation en BTS Services Informatiques aux Organisations, option SLAM, j’ai effectué un stage au sein de l’entreprise SCOR.</p>
+        <p>Ce stage m’a permis de découvrir un environnement professionnel exigeant et de participer à un projet concret lié à la gestion et à la distribution de documents. J’ai été intégrée dans un contexte technique orienté développement backend, avec l’utilisation de technologies comme Java, Spring Boot, JPA, XML et XSD.</p>
+        <p>Le projet sur lequel j’ai travaillé s’inscrivait dans une logique d’automatisation de traitements documentaires destinés à PeopleDoc. L’objectif était de faciliter la conversion et la préparation de documents de paie afin qu’ils puissent être transmis au bon format et au bon endroit dans le système.</p>
+        <p>Ce stage m’a permis de développer des compétences techniques, mais aussi de mieux comprendre les contraintes liées à la sécurité, à l’organisation des données et à l’intégration d’applications dans un grand groupe international.</p>
+      </article>
+    </section>
+
+    <section class="section reveal" id="presentation">
+      <div class="section-title-wrap">
+        <p class="section-kicker">03</p>
+        <h2 class="section-title">Présentation de l’organisme d’accueil</h2>
+        <p class="section-subtitle">
+          SCOR est un groupe international spécialisé dans la réassurance, avec une présence mondiale,
+          une forte expertise métier et un environnement technologique structuré.
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <article class="card stat-card">
+          <div class="stat-icon">👥</div>
+          <span class="stat-value" data-target="3600">0</span>
+          <p class="stat-label">collaborateurs</p>
+        </article>
+
+        <article class="card stat-card">
+          <div class="stat-icon">🌍</div>
+          <span class="stat-value" data-target="35">0</span>
+          <p class="stat-label">bureaux dans le monde</p>
+        </article>
+
+        <article class="card stat-card">
+          <div class="stat-icon">🤝</div>
+          <span class="stat-value" data-target="5000">0</span>
+          <p class="stat-label">clients</p>
+        </article>
+
+        <article class="card stat-card">
+          <div class="stat-icon">📈</div>
+          <span class="stat-value" data-target="215">0</span>
+          <p class="stat-label">ratio de solvabilité</p>
+        </article>
+      </div>
+
+      <div class="activities-grid" style="margin-top: 22px;">
+        <article class="card activity-card">
+          <div class="activity-image"></div>
+          <div class="activity-content">
+            <h3>SCOR P&amp;C</h3>
+            <p>La branche P&amp;C couvre les risques liés aux biens, aux catastrophes naturelles, aux risques industriels et financiers.</p>
+            <a href="https://www.scor.com/en/about-property-casualty" target="_blank" rel="noopener">En savoir plus</a>
+          </div>
+        </article>
+
+        <article class="card activity-card">
+          <div class="activity-image"></div>
+          <div class="activity-content">
+            <h3>SCOR L&amp;H</h3>
+            <p>La branche L&amp;H couvre les risques liés à la santé, à la longévité et à l’assurance vie.</p>
+            <a href="https://www.scor.com/en/about-life-health" target="_blank" rel="noopener">En savoir plus</a>
+          </div>
+        </article>
+
+        <article class="card activity-card">
+          <div class="activity-image"></div>
+          <div class="activity-content">
+            <h3>Investissements</h3>
+            <p>Les investissements contribuent à la stratégie financière du groupe et à la valorisation du capital.</p>
+            <a href="https://www.scor.com/en/investments" target="_blank" rel="noopener">En savoir plus</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="two-col" style="margin-top: 22px;">
+        <article class="card text-card">
+          <h3>3.1 Présentation générale de SCOR</h3>
+          <p>SCOR est un groupe international spécialisé dans la réassurance. Créé en 1970, il s’est progressivement imposé comme l’un des leaders mondiaux du secteur.</p>
+          <p>Le groupe exerce principalement dans trois domaines : la réassurance dommages, la réassurance vie et santé, ainsi que les investissements.</p>
+        </article>
+
+        <article class="card text-card">
+          <h3>3.2 Environnement professionnel</h3>
+          <p>Mon stage s’est déroulé dans un environnement Corporate IT, au sein d’une équipe impliquée dans des sujets techniques liés à la distribution de documents et à l’automatisation de traitements.</p>
+          <p>Cet environnement m’a permis de comprendre le lien entre les besoins métiers, les flux de données et le développement applicatif.</p>
+        </article>
+      </div>
+
+      <div class="proofs">
+        <h3 class="proofs-title">Preuves / visuels entreprise</h3>
+        <div class="proofs-grid">
+          <article class="card proof-card">
+            <img src="assets\Preuves du projet\Preuves du projet\PhotosProjet\SCORIMAGE.jpg" alt="Preuve entreprise 3">
+           <p class="proof-caption">Siège de SCOR à Paris</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="swot">
+      <div class="section-title-wrap">
+        <p class="section-kicker">04</p>
+        <h2 class="section-title">Analyse SWOT</h2>
+      </div>
+
+      <div class="swot-grid">
+        <article class="card swot-card swot-strength">
+          <span class="swot-badge">F</span>
+          <h3>Forces</h3>
+          <ul>
+            <li>Leader mondial reconnu</li>
+            <li>Solidité financière importante</li>
+            <li>Présence internationale étendue</li>
+            <li>Expertise technique et métier forte</li>
+          </ul>
+        </article>
+
+        <article class="card swot-card swot-weakness">
+          <span class="swot-badge">W</span>
+          <h3>Faiblesses</h3>
+          <ul>
+            <li>Organisation complexe</li>
+            <li>Systèmes internes techniques</li>
+            <li>Temps d’adaptation important</li>
+            <li>Forte exigence métier</li>
+          </ul>
+        </article>
+
+        <article class="card swot-card swot-opportunity">
+          <span class="swot-badge">O</span>
+          <h3>Opportunités</h3>
+          <ul>
+            <li>Automatisation des processus</li>
+            <li>Transformation digitale</li>
+            <li>Développement de la data</li>
+            <li>Montée des besoins cyber</li>
+          </ul>
+        </article>
+
+        <article class="card swot-card swot-threat">
+          <span class="swot-badge">T</span>
+          <h3>Menaces</h3>
+          <ul>
+            <li>Concurrence internationale</li>
+            <li>Risques économiques mondiaux</li>
+            <li>Contraintes réglementaires</li>
+            <li>Cybersécurité et conformité</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-title-wrap">
+        <p class="section-kicker">INDICATEURS</p>
+        <h2 class="section-title">Dashboard entreprise</h2>
+        <p class="section-subtitle">
+          Représentation synthétique inspirée d’un dashboard visuel pour mettre en valeur les données de l’entreprise.
+        </p>
+      </div>
+
+      <div class="card dashboard-board">
+        <div class="dashboard-head">
+          <h3>SCOR — Dashboard entreprise</h3>
+          <span>2025</span>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="mini-panel">
+            <h4>Présence internationale</h4>
+            <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar-fill" data-height="72%"></div>
+                <span class="bar-label">35+</span>
+              </div>
+              <div class="bar-col">
+                <div class="bar-fill" data-height="85%"></div>
+                <span class="bar-label">150+</span>
+              </div>
+              <div class="bar-col">
+                <div class="bar-fill" data-height="68%"></div>
+                <span class="bar-label">3600</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="mini-panel">
+            <h4>Répartition des activités</h4>
+            <div class="pie-wrap">
+              <div class="pie"></div>
+              <ul class="legend">
+                <li><span class="legend-dot legend-1"></span>P&amp;C</li>
+                <li><span class="legend-dot legend-2"></span>L&amp;H</li>
+                <li><span class="legend-dot legend-3"></span>Investissements</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="mini-panel">
+            <h4>Notations</h4>
+            <div class="ratings">
+              <div class="rating-row"><span>Standard &amp; Poor’s</span><strong>A+</strong></div>
+              <div class="rating-row"><span>Moody’s</span><strong>A1</strong></div>
+              <div class="rating-row"><span>Fitch</span><strong>A+</strong></div>
+              <div class="rating-row"><span>AM Best</span><strong>A</strong></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="kpi-grid">
+          <article class="card kpi-card">
+            <h5>Actifs investis</h5>
+            <p>23,5 Md€</p>
+          </article>
+          <article class="card kpi-card">
+            <h5>Solvabilité</h5>
+            <p>215 %</p>
+          </article>
+          <article class="card kpi-card">
+            <h5>Retour sur actifs</h5>
+            <p>3,5 %</p>
+          </article>
+          <article class="card kpi-card">
+            <h5>Échéance</h5>
+            <p>4,0 ans</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="contexte">
+      <div class="section-title-wrap">
+        <p class="section-kicker">05</p>
+        <h2 class="section-title">Contexte du stage</h2>
+      </div>
+
+      <article class="card text-card">
+        <p>Le projet étudié pendant mon stage concernait la distribution de documents de paie au format PeopleDoc.</p>
+        <p>Un programme Java existait déjà pour récupérer des bulletins de paie, les convertir techniquement au format attendu par PeopleDoc puis les déposer au bon emplacement dans le système. Ce fonctionnement était adapté à certains pays, notamment la France.</p>
+        <p>Cependant, pour d’autres pays, comme la Suisse ou Singapour, l’automatisation complète n’était pas possible dans le fonctionnement existant.</p>
+        <p>L’objectif était donc d’adapter le moteur de conversion Java afin de faire évoluer son utilisation vers une logique plus orientée utilisateur.</p>
+        <p>L’idée finale était de créer une application Spring Boot capable de gérer l’authentification, l’upload de fichiers, le lancement de la conversion existante et la préparation des documents convertis.</p>
+      </article>
+
+      <div class="proofs">
+        <h3 class="proofs-title">Preuves / visuels de contexte</h3>
+        <div class="proofs-grid">
+          <article class="card proof-card">
+            <img src="assets\Preuves du projet\Preuves du projet\PhotosProjet\IMG_0554 (1).png" alt="Preuve contexte 2">
+            <div class="proof-caption">Exemple de visuel lié au fonctionnement de PeopleDoc, ADP ou du moteur de conversion.</div>
+          </article>
+
+          <article class="card proof-card">
+            <img src="assets\Preuves du projet\Preuves du projet\PhotosProjet\image (7).png" alt="Preuve contexte 3">
+            <div class="proof-caption">Illustration d’un flux, d’une interface ou d’un fichier utilisé dans le projet.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="competences">
+      <div class="section-title-wrap">
+        <p class="section-kicker">06</p>
+        <h2 class="section-title">Compétences mobilisées et acquises</h2>
+      </div>
+
+      <div class="compliance-grid">
+        <article class="card compliance-card">
+          <div class="compliance-icon">J</div>
+          <h3>Java / Backend</h3>
+          <p>Renforcement de ma pratique du développement backend et de la logique applicative.</p>
+        </article>
+
+        <article class="card compliance-card">
+          <div class="compliance-icon">S</div>
+          <h3>Spring Boot</h3>
+          <p>Compréhension de la structure d’une application web Java et de son organisation technique.</p>
+        </article>
+
+        <article class="card compliance-card">
+          <div class="compliance-icon">X</div>
+          <h3>XML / XSD</h3>
+          <p>Manipulation, lecture et validation de fichiers XML dans une chaîne de traitement métier.</p>
+        </article>
+
+        <article class="card compliance-card">
+          <div class="compliance-icon">P</div>
+          <h3>Professionnel</h3>
+          <p>Rigueur, autonomie, adaptation, lecture de documentation et recherche de solutions techniques.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="missions">
+      <div class="section-title-wrap">
+        <p class="section-kicker">07</p>
+        <h2 class="section-title">Missions réalisées</h2>
+        <p class="section-subtitle">
+          Missions détaillées menées dans le cadre du projet de conversion et de distribution de documents via PeopleDoc.
+        </p>
+      </div>
+
+      <div class="missions-grid">
+        <article class="card mission-card">
+          <span class="mission-number">1</span>
+          <h3>Compréhension de l’architecture du projet</h3>
+          <p>Étude de l’arborescence, des packages, du rôle des fichiers de configuration et du cheminement global du traitement.</p>
+        </article>
+
+        <article class="card mission-card">
+          <span class="mission-number">2</span>
+          <h3>Traitement des fichiers XML et validation XSD</h3>
+          <p>Analyse de l’index XML, compréhension de sa structure et validation de la conformité avant traitement métier.</p>
+        </article>
+
+        <article class="card mission-card">
+          <span class="mission-number">3</span>
+          <h3>Étude et réutilisation du moteur de conversion Java</h3>
+          <p>Compréhension du fonctionnement du moteur existant transformant un ZIP ADP en ZIP PeopleDoc.</p>
+        </article>
+
+        <article class="card mission-card">
+          <span class="mission-number">4</span>
+          <h3>Analyse de la récupération de données via SOAP</h3>
+          <p>Étude du service SOAP permettant de récupérer les données collaborateurs nécessaires au traitement.</p>
+        </article>
+
+        <article class="card mission-card">
+          <span class="mission-number">5</span>
+          <h3>Réflexion sur l’évolution vers une interface web</h3>
+          <p>Analyse des besoins autour de l’authentification, de l’upload de fichiers et du lancement des conversions.</p>
+        </article>
+
+        <article class="card mission-card">
+          <span class="mission-number">6</span>
+          <h3>Proposition d’améliorations techniques</h3>
+          <p>Réflexion autour des erreurs, de la sécurité, de la traçabilité, de la qualité de l’API et de la robustesse globale.</p>
+        </article>
+      </div>
+
+      <div class="proofs">
+        <h3 class="proofs-title">Preuves / captures techniques</h3>
+        <div class="proofs-grid">
+          <article class="card proof-card">
+            <img src="assets\Preuves du projet\Preuves du projet\PhotosProjet\Arborescence1.PNG" alt="Preuve mission 1">
+            <div class="proof-caption">Capture de code, d’arborescence ou de fichier montrant l’architecture du projet.</div>
+          </article>
+
+          <article class="card proof-card">
+            <img src="assets\Preuves du projet\Preuves du projet\PhotosProjet\2026-02-06_15-03-38.PNG" alt="Preuve mission 2">
+            <div class="proof-caption">Exemple de document XML, XSD ou capture liée au traitement technique des fichiers.</div>
+          </article>
+
+          <article class="card proof-card">
+            <img src="assets\Preuves du projet\Preuves du projet\PhotosProjet\2026-02-02_16-43-45.PNG" alt="Preuve mission 3">
+            <div class="proof-caption">Capture liée à l’upload, à l’interface, au moteur de conversion ou aux résultats produits.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="difficultes">
+      <div class="section-title-wrap">
+        <p class="section-kicker">08</p>
+        <h2 class="section-title">Difficultés rencontrées</h2>
+      </div>
+
+      <article class="card text-card">
+        <p>La première difficulté a été la compréhension globale du projet. L’application comportait plusieurs couches : configuration, services, traitements XML, récupération de données via SOAP, génération de fichiers et création du ZIP final.</p>
+        <p>J’ai également rencontré une difficulté liée à la technicité de certains éléments, notamment la logique autour des fichiers XML, des XSD et de leur validation.</p>
+        <p>Une autre difficulté concernait la compréhension des flux de données entre ADP, le moteur de conversion Java, les données collaborateurs et PeopleDoc.</p>
+        <p>Enfin, les questions de sécurité et de droits d’accès ajoutaient un niveau de complexité supplémentaire, notamment dans la réflexion autour de l’authentification, du périmètre par pays et de la gestion de données sensibles.</p>
+        <p>Pour surmonter ces difficultés, j’ai adopté une démarche progressive : lecture attentive de la documentation, observation du code existant, analyse des étapes de traitement et recherche de solutions techniques cohérentes.</p>
+      </article>
+    </section>
+
+    <section class="section reveal" id="conclusion">
+      <div class="section-title-wrap">
+        <p class="section-kicker">09</p>
+        <h2 class="section-title">Conclusion</h2>
+      </div>
+
+      <article class="card text-card">
+        <p>Ce stage chez SCOR a été une expérience particulièrement enrichissante.</p>
+        <p>Il m’a permis de travailler sur un projet concret, utile et technique, centré sur la transformation et la distribution de documents dans un environnement professionnel exigeant.</p>
+        <p>J’ai pu renforcer mes compétences en Java, en Spring Boot, en manipulation de fichiers XML et en compréhension d’architectures backend. J’ai également appris à lire un projet existant, à comprendre une logique de traitement complexe et à réfléchir à des améliorations possibles dans une logique professionnelle.</p>
+        <p>Ce stage m’a aussi permis de prendre conscience de l’importance de la sécurité, de la conformité et de la qualité logicielle dans les systèmes d’information d’une grande entreprise.</p>
+        <p>Enfin, cette expérience a confirmé mon intérêt pour le développement backend et pour les projets liés à l’automatisation, au traitement de données et à l’intégration d’applications.</p>
+      </article>
+    </section>
+
+    <div class="footer-back reveal">
+      <a href="projects.html" class="back-btn">← Retour aux projets</a>
+      <a href="bureau.html" class="back-btn">Retour au bureau</a>
+    </div>
+
+  </div>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    const counters = document.querySelectorAll('.stat-value');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        const el = entry.target;
+        const target = parseInt(el.dataset.target, 10);
+        let current = 0;
+        const increment = Math.max(1, Math.ceil(target / 70));
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          el.textContent = current.toLocaleString('fr-FR');
+        }, 22);
+
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    const bars = document.querySelectorAll('.bar-fill');
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const bar = entry.target;
+        const h = bar.dataset.height;
+        bar.style.transition = 'transform 0.9s ease';
+        bar.style.transform = 'scaleY(1)';
+        bar.style.height = h;
+        barObserver.unobserve(bar);
+      });
+    }, { threshold: 0.35 });
+
+    bars.forEach(bar => {
+      bar.style.height = bar.dataset.height;
+      barObserver.observe(bar);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+package com.scor.peopledoc.ws;
+
+import com.scor.peopledoc.config.ApplicationProperties;
+import com.scor.peopledoc.wsdl.*;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.ws.WebServiceMessage;
+import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
+import org.springframework.ws.soap.client.SoapFaultClientException;
+import org.springframework.ws.soap.saaj.SaajSoapMessage;
+
+import javax.xml.XMLConstants;
+import javax.xml.soap.SOAPException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.StringWriter;
+import java.util.Optional;
+
+@Slf4j
+@AllArgsConstructor
+public class ScheduleServiceConsumer extends WebServiceGatewaySupport {
+	private ApplicationProperties applicationProperties;
+
+	public Optional<ScheduleReportResponse> scheduleReport() {
+		try {
+			var objectFactory = new ObjectFactory();
+			var scheduleReport = objectFactory.createScheduleReport();
+			scheduleReport.setUserID(applicationProperties.getUserId());
+			scheduleReport.setPassword(applicationProperties.getPassword());
+
+			var scheduleRequest = objectFactory.createScheduleRequest();
+			scheduleReport.setScheduleRequest(scheduleRequest);
+			scheduleRequest.setSaveDataOption(false);
+			scheduleRequest.setSaveOutputOption(true);
+			scheduleRequest.setSchedulePublicOption(false);
+			scheduleRequest.setUserJobDesc("Vtom called");
+			scheduleRequest.setUserJobName("Vtom call for Slip converter");
+
+			var reportRequest = objectFactory.createReportRequest();
+			scheduleRequest.setReportRequest(reportRequest);
+			reportRequest.setAttributeFormat("CSV");
+			reportRequest.setReportAbsolutePath(applicationProperties.getReportAbsolutePath());
+
+			var scheduleReportResponse = (ScheduleReportResponse) getWebServiceTemplate()
+					.marshalSendAndReceive(this.getDefaultUri() + "/scheduleReport", scheduleReport);
+
+			return Optional.of(scheduleReportResponse);
+		} catch (SoapFaultClientException ex) {
+			log.error(ex.getMessage(), ex);
+			this.manageSoapFaultClientException(ex);
+		} catch (RuntimeException ex) {
+			log.error(ex.getMessage(), ex);
+		}
+
+		return Optional.empty();
+	}
+
+	public Optional<GetAllScheduledReportHistoryResponse> allScheduledReportHistory(long jobId) {
+		try {
+			var objectFactory = new ObjectFactory();
+			var getAllScheduledReportHistory = objectFactory.createGetAllScheduledReportHistory();
+			getAllScheduledReportHistory.setBeginIdx(1);
+			getAllScheduledReportHistory.setUserID(applicationProperties.getUserId());
+			getAllScheduledReportHistory.setPassword(applicationProperties.getPassword());
+
+			var filter = objectFactory.createJobFilterProperties();
+			filter.setJobId(jobId);
+			filter.setOwner(applicationProperties.getUserId());
+			getAllScheduledReportHistory.setFilter(filter);
+
+			GetAllScheduledReportHistoryResponse getAllScheduledReportHistoryResponse = null;
+			var stop = true;
+			long sleepTime = 500;
+			var nbIteration = 0;
+
+			while (stop) {
+				var hasError = false;
+				try {
+					getAllScheduledReportHistoryResponse = (GetAllScheduledReportHistoryResponse) getWebServiceTemplate()
+							.marshalSendAndReceive(this.getDefaultUri() + "/getAllScheduledReportHistory",
+									getAllScheduledReportHistory);
+				} catch (SoapFaultClientException e) {
+					log.error(e.getMessage(), e);
+					if (nbIteration >= this.applicationProperties.getIterationCount()) {
+						throw e;
+					}
+					hasError = true;
+				}
+
+				if ((!hasError && getAllScheduledReportHistoryResponse.getGetAllScheduledReportHistoryReturn() != null)
+						|| nbIteration >= this.applicationProperties.getIterationCount()) {
+					log.info("getAllScheduledReportHistory finished with iteration {}", nbIteration);
+					stop = false;
+				} else {
+					log.info("getAllScheduledReportHistory retry with iteration {} and sleeptime {}", nbIteration,
+							sleepTime);
+					try {
+						Thread.sleep(sleepTime);
+						sleepTime = sleepTime * 2;
+						nbIteration++;
+					} catch (InterruptedException e) {
+						throw new RuntimeException(e);
+					}
+				}
+			}
+			return Optional.ofNullable(getAllScheduledReportHistoryResponse);
+		} catch (SoapFaultClientException ex) {
+			log.error(ex.getMessage(), ex);
+			this.manageSoapFaultClientException(ex);
+		} catch (RuntimeException ex) {
+			log.error(ex.getMessage(), ex);
+		}
+
+		return Optional.empty();
+	}
+
+	public Optional<GetScheduledReportOutputInfoResponse> scheduledReportOutputInfo(long jobInstanceID) {
+		try {
+			var objectFactory = new ObjectFactory();
+			var getScheduledReportOutputInfo = objectFactory.createGetScheduledReportOutputInfo();
+
+			getScheduledReportOutputInfo.setUserID(applicationProperties.getUserId());
+			getScheduledReportOutputInfo.setPassword(applicationProperties.getPassword());
+			getScheduledReportOutputInfo.setJobInstanceID(String.valueOf(jobInstanceID));
+
+			GetScheduledReportOutputInfoResponse getScheduledReportOutputInfoResponse = null;
+			var stop = true;
+			long sleepTime = 500;
+			var nbIteration = 0;
+
+			while (stop) {
+				var hasError = false;
+				try {
+					getScheduledReportOutputInfoResponse = (GetScheduledReportOutputInfoResponse) getWebServiceTemplate()
+
+							.marshalSendAndReceive(this.getDefaultUri() + "/getScheduledReportOutputInfo",
+									getScheduledReportOutputInfo);
+				} catch (SoapFaultClientException e) {
+					log.error(e.getMessage(), e);
+					if (nbIteration >= this.applicationProperties.getIterationCount()) {
+						throw e;
+					}
+					hasError = true;
+				}
+
+				if (!hasError && getScheduledReportOutputInfoResponse.getGetScheduledReportOutputInfoReturn() != null
+						|| nbIteration >= this.applicationProperties.getIterationCount()) {
+					log.info("getScheduledReportOutputInfo finished with iteration {}", nbIteration);
+					stop = false;
+				} else {
+					log.info("getScheduledReportOutputInfo retry with iteration {} and sleeptime {}", nbIteration,
+							sleepTime);
+					try {
+						Thread.sleep(sleepTime);
+						sleepTime = sleepTime * 2;
+						nbIteration++;
+					} catch (InterruptedException e) {
+						throw new RuntimeException(e);
+					}
+				}
+			}
+
+			return Optional.ofNullable(getScheduledReportOutputInfoResponse);
+		} catch (SoapFaultClientException ex) {
+			log.error(ex.getMessage(), ex);
+			this.manageSoapFaultClientException(ex);
+		} catch (RuntimeException ex) {
+			log.error(ex.getMessage(), ex);
+		}
+
+		return Optional.empty();
+	}
+
+	public Optional<GetDocumentDataResponse> getDocumentData(long jobOutputID) {
+        try {
+            var objectFactory = new ObjectFactory();
+            var getDocumentData = objectFactory.createGetDocumentData();
+            getDocumentData.setUserID(applicationProperties.getUserId());
+            getDocumentData.setPassword(applicationProperties.getPassword());
+            getDocumentData.setJobOutputID(String.valueOf(jobOutputID));
+            
+            GetDocumentDataResponse getDocumentDataResponse = null;
+            
+            var stop = true;
+            long sleepTime = 500;
+            var nbIteration = 0;
+
+            while (stop) {
+            	var hasError = false;
+            	try {
+            getDocumentDataResponse = (GetDocumentDataResponse) getWebServiceTemplate()
+                .marshalSendAndReceive(
+                    this.getDefaultUri() + "/getDocumentData",
+                    getDocumentData);
+            	} catch (SoapFaultClientException e) {
+                    log.error(e.getMessage(), e);
+                    if (nbIteration >= this.applicationProperties.getIterationCount()) {
+                        throw e;
+                    }
+                    hasError = true;
+                }
+            	
+				if (!hasError && getDocumentDataResponse.getGetDocumentDataReturn() != null
+						|| nbIteration >= this.applicationProperties.getIterationCount()) {
+					log.info("getDocumentData finished with iteration {}", nbIteration);
+					stop = false;
+				} else {
+					log.info("getDocumentData retry with iteration {} and sleeptime {}", nbIteration,
+							sleepTime);
+					try {
+						Thread.sleep(sleepTime);
+						sleepTime = sleepTime * 2;
+						nbIteration++;
+					} catch (InterruptedException e) {
+						throw new RuntimeException(e);
+					}
+				}
+            }
+
+            return Optional.ofNullable(getDocumentDataResponse);
+        } catch (SoapFaultClientException ex) {
+            log.error(ex.getMessage(), ex);
+            this.manageSoapFaultClientException(ex);
+        } catch (RuntimeException ex) {
+            log.error(ex.getMessage(), ex);
+        }
+
+        return Optional.empty();
+    }
+
+	private void manageSoapFaultClientException(SoapFaultClientException ex) {
+		if (log.isInfoEnabled()) {
+			WebServiceMessage webServiceMessage = ex.getWebServiceMessage();
+			var saajSoapMessage = (SaajSoapMessage) webServiceMessage;
+			var soapMessage = saajSoapMessage.getSaajMessage();
+			var soapPart = soapMessage.getSOAPPart();
+			try {
+				var soapEnvelope = soapPart.getEnvelope();
+				var soapBody = soapEnvelope.getBody();
+				var soapFault = soapBody.getFault();
+
+				var sw = new StringWriter();
+				var transformerFactory = TransformerFactory.newInstance();
+				transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+				transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, ""); // Compliant
+				transformerFactory.newTransformer().transform(new DOMSource(soapFault), new StreamResult(sw));
+				var faultResponse = sw.toString();
+				log.error(faultResponse);
+			} catch (SOAPException | TransformerException e) {
+				log.error(e.getMessage(), e);
+			}
+		}
+	}
+}

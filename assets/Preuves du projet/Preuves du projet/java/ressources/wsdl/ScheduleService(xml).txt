@@ -1,0 +1,3447 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions xmlns:intf="http://xmlns.oracle.com/oxp/service/v2"
+                  xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:impl="http://xmlns.oracle.com/oxp/service/v2"
+                  xmlns:apachesoap="http://xml.apache.org/xml-soap"
+                  targetNamespace="http://xmlns.oracle.com/oxp/service/v2">
+    <wsdl:types>
+        <schema xmlns:intf="http://xmlns.oracle.com/oxp/service/v2"
+                xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:impl="http://xmlns.oracle.com/oxp/service/v2"
+                xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns="http://www.w3.org/2001/XMLSchema"
+                targetNamespace="http://xmlns.oracle.com/oxp/service/v2" elementFormDefault="qualified">
+
+            <element name="getDocumentData">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobOutputID" type="xsd:string"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getDocumentDataResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getDocumentDataReturn" type="xsd:base64Binary"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getAllJobInstanceIDs">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="submittedJobId" type="xsd:string"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getAllJobInstanceIDsResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getAllJobInstanceIDsReturn" nillable="true" type="impl:ArrayOfString"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <complexType name="AccessDeniedException">
+
+                <sequence/>
+
+            </complexType>
+
+            <element name="fault" type="impl:AccessDeniedException"/>
+
+            <complexType name="InvalidParametersException">
+
+                <sequence/>
+
+            </complexType>
+
+            <element name="fault1" type="impl:InvalidParametersException"/>
+
+            <complexType name="OperationFailedException">
+
+                <sequence/>
+
+            </complexType>
+
+            <element name="fault2" type="impl:OperationFailedException"/>
+
+            <element name="getAllScheduledReport">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="filter" type="impl:JobFilterProperties"/>
+
+                        <element name="beginIdx" type="xsd:int"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <complexType name="JobFilterProperties">
+
+                <sequence>
+
+                    <element name="endTime" nillable="true" type="xsd:string"/>
+
+                    <element name="endTimeOperator" nillable="true" type="xsd:string"/>
+
+                    <element name="jobId" nillable="true" type="xsd:long"/>
+
+                    <element name="jobName" nillable="true" type="xsd:string"/>
+
+                    <element name="jobNameOperator" nillable="true" type="xsd:string"/>
+
+                    <element name="owner" nillable="true" type="xsd:string"/>
+
+                    <element name="ownerOperator" nillable="true" type="xsd:string"/>
+
+                    <element name="reportName" nillable="true" type="xsd:string"/>
+
+                    <element name="reportNameOperator" nillable="true" type="xsd:string"/>
+
+                    <element name="scope" nillable="true" type="xsd:string"/>
+
+                    <element name="startTime" nillable="true" type="xsd:string"/>
+
+                    <element name="startTimeOperator" nillable="true" type="xsd:string"/>
+
+                    <element name="status" nillable="true" type="xsd:string"/>
+
+                </sequence>
+
+            </complexType>
+
+            <element name="getAllScheduledReportResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getAllScheduledReportReturn" type="impl:JobInfosList"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <complexType name="JobInfo">
+
+                <sequence>
+
+                    <element name="burstingJob" type="xsd:boolean"/>
+
+                    <element name="created" nillable="true" type="xsd:dateTime"/>
+
+                    <element name="deleted" type="xsd:boolean"/>
+
+                    <element name="endDate" nillable="true" type="xsd:dateTime"/>
+
+                    <element name="instanceId" nillable="true" type="xsd:long"/>
+
+                    <element name="jobId" nillable="true" type="xsd:long"/>
+
+                    <element name="jobType" nillable="true" type="xsd:string"/>
+
+                    <element name="lastUpdated" nillable="true" type="xsd:dateTime"/>
+
+                    <element name="owner" nillable="true" type="xsd:string"/>
+
+                    <element name="parentJobId" nillable="true" type="xsd:long"/>
+
+                    <element name="public" type="xsd:boolean"/>
+
+                    <element name="reportUrl" nillable="true" type="xsd:string"/>
+
+                    <element name="startDate" nillable="true" type="xsd:dateTime"/>
+
+                    <element name="status" nillable="true" type="xsd:string"/>
+
+                    <element name="statusDetail" nillable="true" type="xsd:string"/>
+
+                    <element name="userJobName" nillable="true" type="xsd:string"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ArrayOfJobInfo">
+
+                <sequence>
+
+                    <element name="item" type="impl:JobInfo" minOccurs="0" maxOccurs="unbounded"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="JobInfosList">
+
+                <sequence>
+
+                    <element name="jobInfoList" nillable="true" type="impl:ArrayOfJobInfo"/>
+
+                </sequence>
+
+            </complexType>
+
+            <element name="getAllScheduledReportInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="filter" type="impl:JobFilterProperties"/>
+
+                        <element name="beginIdx" type="xsd:int"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getAllScheduledReportInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getAllScheduledReportInSessionReturn" type="impl:JobInfosList"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getScheduledJobInfo">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobInstanceID" type="xsd:string"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getScheduledJobInfoResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getScheduledJobInfoReturn" type="impl:JobDetail"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <complexType name="JobDetail">
+
+                <sequence>
+
+                    <element name="bursting" type="xsd:boolean"/>
+
+                    <element name="burstingParameters" nillable="true" type="xsd:string"/>
+
+                    <element name="created" nillable="true" type="xsd:dateTime"/>
+
+                    <element name="dataLocator" nillable="true" type="xsd:string"/>
+
+                    <element name="deleted" type="xsd:boolean"/>
+
+                    <element name="deliveryDescription" nillable="true" type="xsd:string"/>
+
+                    <element name="deliveryParameters" nillable="true" type="xsd:string"/>
+
+                    <element name="endDate" nillable="true" type="xsd:dateTime"/>
+
+                    <element name="instanceId" type="xsd:int"/>
+
+                    <element name="issuer" nillable="true" type="xsd:string"/>
+
+                    <element name="jobGroup" nillable="true" type="xsd:string"/>
+
+                    <element name="jobId" type="xsd:int"/>
+
+                    <element name="jobSetId" type="xsd:int"/>
+
+                    <element name="jobType" nillable="true" type="xsd:string"/>
+
+                    <element name="lastUpdated" nillable="true" type="xsd:dateTime"/>
+
+                    <element name="locale" nillable="true" type="xsd:string"/>
+
+                    <element name="notificationParameters" nillable="true" type="xsd:string"/>
+
+                    <element name="owner" nillable="true" type="xsd:string"/>
+
+                    <element name="parentJobId" type="xsd:int"/>
+
+                    <element name="public" type="xsd:boolean"/>
+
+                    <element name="reportParameters" nillable="true" type="xsd:string"/>
+
+                    <element name="reportUrl" nillable="true" type="xsd:string"/>
+
+                    <element name="runType" nillable="true" type="xsd:string"/>
+
+                    <element name="scheduleContext" nillable="true" type="xsd:string"/>
+
+                    <element name="scheduleDescription" nillable="true" type="xsd:string"/>
+
+                    <element name="scheduleParameters" nillable="true" type="xsd:string"/>
+
+                    <element name="scheduleSource" nillable="true" type="xsd:string"/>
+
+                    <element name="startDate" nillable="true" type="xsd:dateTime"/>
+
+                    <element name="status" nillable="true" type="xsd:string"/>
+
+                    <element name="statusDetail" nillable="true" type="xsd:string"/>
+
+                    <element name="storageType" nillable="true" type="xsd:string"/>
+
+                    <element name="userDescription" nillable="true" type="xsd:string"/>
+
+                    <element name="userJobName" nillable="true" type="xsd:string"/>
+
+                    <element name="xmlDataAvailable" type="xsd:boolean"/>
+
+                    <element name="xmlDataCompressed" type="xsd:boolean"/>
+
+                    <element name="xmlDataContentType" nillable="true" type="xsd:string"/>
+
+                    <element name="xschurl" nillable="true" type="xsd:string"/>
+
+                </sequence>
+
+            </complexType>
+
+            <element name="getScheduledJobInfoInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobInstanceID" type="xsd:string"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getScheduledJobInfoInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getScheduledJobInfoInSessionReturn" type="impl:JobDetail"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getScheduledReportStatus">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="scheduledJobID" type="xsd:string"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getScheduledReportStatusResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getScheduledReportStatusReturn" type="impl:JobStatus"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <complexType name="JobStatus">
+
+                <sequence>
+
+                    <element name="jobID" nillable="true" type="xsd:string"/>
+
+                    <element name="jobStatus" nillable="true" type="xsd:string"/>
+
+                    <element name="message" nillable="true" type="xsd:string"/>
+
+                </sequence>
+
+            </complexType>
+
+            <element name="getScheduledReportStatusInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="scheduledJobID" type="xsd:string"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getScheduledReportStatusInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getScheduledReportStatusInSessionReturn" type="impl:JobStatus"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getAllScheduledReportHistory">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="filter" type="impl:JobFilterProperties"/>
+
+                        <element name="beginIdx" type="xsd:int"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getAllScheduledReportHistoryResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getAllScheduledReportHistoryReturn" type="impl:JobInfosList"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getAllScheduledReportHistoryInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="filter" type="impl:JobFilterProperties"/>
+
+                        <element name="beginIdx" type="xsd:int"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getAllScheduledReportHistoryInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getAllScheduledReportHistoryInSessionReturn" type="impl:JobInfosList"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getScheduledReportOutputInfo">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobInstanceID" type="xsd:string"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getScheduledReportOutputInfoResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getScheduledReportOutputInfoReturn" type="impl:JobOutputsList"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <complexType name="JobOutput">
+
+                <sequence>
+
+                    <element name="burstKey" nillable="true" type="xsd:string"/>
+
+                    <element name="created" nillable="true" type="xsd:dateTime"/>
+
+                    <element name="deleted" type="xsd:boolean"/>
+
+                    <element name="documentDataAvailable" type="xsd:boolean"/>
+
+                    <element name="documentDataCompressed" type="xsd:boolean"/>
+
+                    <element name="documentDataContentType" nillable="true" type="xsd:string"/>
+
+                    <element name="jobId" nillable="true" type="xsd:long"/>
+
+                    <element name="jobName" nillable="true" type="xsd:string"/>
+
+                    <element name="lastUpdated" nillable="true" type="xsd:dateTime"/>
+
+                    <element name="outputId" nillable="true" type="xsd:long"/>
+
+                    <element name="outputName" nillable="true" type="xsd:string"/>
+
+                    <element name="parentOutputId" nillable="true" type="xsd:long"/>
+
+                    <element name="status" nillable="true" type="xsd:string"/>
+
+                    <element name="statusDetail" nillable="true" type="xsd:string"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ArrayOfJobOutput">
+
+                <sequence>
+
+                    <element name="item" type="impl:JobOutput" minOccurs="0" maxOccurs="unbounded"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="JobOutputsList">
+
+                <sequence>
+
+                    <element name="jobOutputList" nillable="true" type="impl:ArrayOfJobOutput"/>
+
+                </sequence>
+
+            </complexType>
+
+            <element name="getScheduledReportOutputInfoInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobInstanceID" type="xsd:string"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getScheduledReportOutputInfoInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getScheduledReportOutputInfoInSessionReturn" type="impl:JobOutputsList"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getDocumentDataInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobOutputID" type="xsd:string"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getDocumentDataInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getDocumentDataInSessionReturn" type="xsd:base64Binary"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="downloadDocumentData">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobOutputID" type="xsd:string"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="downloadDocumentDataResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="downloadDocumentDataReturn" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="downloadDocumentDataInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobOutputID" type="xsd:string"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="downloadDocumentDataInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="downloadDocumentDataInSessionReturn" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getXMLData">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobInstanceID" type="xsd:string"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getXMLDataResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getXMLDataReturn" type="xsd:base64Binary"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getXMLDataInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobInstanceID" type="xsd:string"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getXMLDataInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getXMLDataInSessionReturn" type="xsd:base64Binary"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="downloadXMLData">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobInstanceID" type="xsd:string"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="downloadXMLDataResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="downloadXMLDataReturn" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="downloadXMLDataInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobInstanceID" type="xsd:string"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="downloadXMLDataInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="downloadXMLDataInSessionReturn" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="resendScheduledReport">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="outputJobID" type="xsd:string"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="resendScheduledReportResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="resendScheduledReportReturn" type="xsd:boolean"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="resendScheduledReportInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="outputJobID" type="xsd:string"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="resendScheduledReportInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="resendScheduledReportInSessionReturn" type="xsd:boolean"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="deleteJobHistory">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="instanceJobID" type="xsd:string"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="deleteJobHistoryResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="deleteJobHistoryReturn" type="xsd:boolean"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="deleteJobHistoryInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="instanceJobID" type="xsd:string"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="deleteJobHistoryInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="deleteJobHistoryInSessionReturn" type="xsd:boolean"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="purgeJobHistory">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="instanceJobID" type="xsd:string"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="purgeJobHistoryResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="purgeJobHistoryReturn" type="xsd:boolean"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="purgeJobHistoryInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="instanceJobID" type="xsd:string"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="purgeJobHistoryInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="purgeJobHistoryInSessionReturn" type="xsd:boolean"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getScheduledReportDeliveryInfo">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobOutputID" type="xsd:string"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getScheduledReportDeliveryInfoResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getScheduledReportDeliveryInfoReturn" type="impl:JobOutputDeliverysList"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <complexType name="JobOutputDelivery">
+
+                <sequence>
+
+                    <element name="created" nillable="true" type="xsd:dateTime"/>
+
+                    <element name="deliveryID" nillable="true" type="xsd:long"/>
+
+                    <element name="deliveryParameters" nillable="true" type="xsd:base64Binary"/>
+
+                    <element name="lastUpdated" nillable="true" type="xsd:dateTime"/>
+
+                    <element name="outputID" nillable="true" type="xsd:long"/>
+
+                    <element name="parentDeliveryID" nillable="true" type="xsd:long"/>
+
+                    <element name="status" nillable="true" type="xsd:string"/>
+
+                    <element name="statusDetail" nillable="true" type="xsd:string"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ArrayOfJobOutputDelivery">
+
+                <sequence>
+
+                    <element name="item" type="impl:JobOutputDelivery" minOccurs="0" maxOccurs="unbounded"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="JobOutputDeliverysList">
+
+                <sequence>
+
+                    <element name="jobOutputDeliveryList" nillable="true" type="impl:ArrayOfJobOutputDelivery"/>
+
+                </sequence>
+
+            </complexType>
+
+            <element name="getScheduledReportDeliveryInfoInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobOutputID" type="xsd:string"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getScheduledReportDeliveryInfoInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getScheduledReportDeliveryInfoInSessionReturn"
+                                 type="impl:JobOutputDeliverysList"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="scheduleReport">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="scheduleRequest" type="impl:ScheduleRequest"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <complexType name="EMailDeliveryOption">
+
+                <sequence>
+
+                    <element name="emailAttachmentName" nillable="true" type="xsd:string"/>
+
+                    <element name="emailBCC" nillable="true" type="xsd:string"/>
+
+                    <element name="emailBody" nillable="true" type="xsd:string"/>
+
+                    <element name="emailCC" nillable="true" type="xsd:string"/>
+
+                    <element name="emailFrom" nillable="true" type="xsd:string"/>
+
+                    <element name="emailReplyTo" nillable="true" type="xsd:string"/>
+
+                    <element name="emailServerName" nillable="true" type="xsd:string"/>
+
+                    <element name="emailSubject" nillable="true" type="xsd:string"/>
+
+                    <element name="emailTo" nillable="true" type="xsd:string"/>
+
+                    <element name="emailDeliveryStatusNotification" type="xsd:boolean" minOccurs="0"/>
+
+                    <element name="emailReturnReceipt" type="xsd:boolean" minOccurs="0"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ArrayOfEMailDeliveryOption">
+
+                <sequence>
+
+                    <element name="item" type="impl:EMailDeliveryOption" minOccurs="0" maxOccurs="unbounded"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="FaxDeliveryOption">
+
+                <sequence>
+
+                    <element name="faxNumber" nillable="true" type="xsd:string"/>
+
+                    <element name="faxServer" nillable="true" type="xsd:string"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ArrayOfFaxDeliveryOption">
+
+                <sequence>
+
+                    <element name="item" type="impl:FaxDeliveryOption" minOccurs="0" maxOccurs="unbounded"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="FTPDeliveryOption">
+
+                <sequence>
+
+                    <element name="ftpServerName" nillable="true" type="xsd:string"/>
+
+                    <element name="ftpUserName" nillable="true" type="xsd:string"/>
+
+                    <element name="ftpUserPassword" nillable="true" type="xsd:string"/>
+
+                    <element name="remoteFile" nillable="true" type="xsd:string"/>
+
+                    <element name="sftpOption" type="xsd:boolean"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ArrayOfFTPDeliveryOption">
+
+                <sequence>
+
+                    <element name="item" type="impl:FTPDeliveryOption" minOccurs="0" maxOccurs="unbounded"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="LocalDeliveryOption">
+
+                <sequence>
+
+                    <element name="destination" nillable="true" type="xsd:string"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ArrayOfLocalDeliveryOption">
+
+                <sequence>
+
+                    <element name="item" type="impl:LocalDeliveryOption" minOccurs="0" maxOccurs="unbounded"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="PrintDeliveryOption">
+
+                <sequence>
+
+                    <element name="printNumberOfCopy" nillable="true" type="xsd:string"/>
+
+                    <element name="printOrientation" nillable="true" type="xsd:string"/>
+
+                    <element name="printRange" nillable="true" type="xsd:string"/>
+
+                    <element name="printSide" nillable="true" type="xsd:string"/>
+
+                    <element name="printTray" nillable="true" type="xsd:string"/>
+
+                    <element name="printerName" nillable="true" type="xsd:string"/>
+
+                    <element name="printFileName" nillable="true" type="xsd:string"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ArrayOfPrintDeliveryOption">
+
+                <sequence>
+
+                    <element name="item" type="impl:PrintDeliveryOption" minOccurs="0" maxOccurs="unbounded"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="WCCDeliveryOption">
+
+                <sequence>
+
+                    <element name="WCCAccount" nillable="true" type="xsd:string"/>
+
+                    <element name="WCCAuthor" nillable="true" type="xsd:string"/>
+
+                    <element name="WCCComments" nillable="true" type="xsd:string"/>
+
+                    <element name="WCCFileName" nillable="true" type="xsd:string"/>
+
+                    <element name="WCCFolderPath" nillable="true" type="xsd:string"/>
+
+                    <element name="WCCIncludeMetadata" type="xsd:boolean"/>
+
+                    <element name="WCCSecurityGroup" nillable="true" type="xsd:string"/>
+
+                    <element name="WCCServerName" nillable="true" type="xsd:string"/>
+
+                    <element name="WCCTitle" nillable="true" type="xsd:string"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ArrayOfWCCDeliveryOption">
+
+                <sequence>
+
+                    <element name="item" type="impl:WCCDeliveryOption" minOccurs="0" maxOccurs="unbounded"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="WebDAVDeliveryOption">
+
+                <sequence>
+
+                    <element name="deliveryAuthType" nillable="true" type="xsd:string"/>
+
+                    <element name="password" nillable="true" type="xsd:string"/>
+
+                    <element name="remoteFilePath" nillable="true" type="xsd:string"/>
+
+                    <element name="server" nillable="true" type="xsd:string"/>
+
+                    <element name="userName" nillable="true" type="xsd:string"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ArrayOfWebDAVDeliveryOption">
+
+                <sequence>
+
+                    <element name="item" type="impl:WebDAVDeliveryOption" minOccurs="0" maxOccurs="unbounded"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="DeliveryChannels">
+
+                <sequence>
+
+                    <element name="emailOptions" nillable="true" type="impl:ArrayOfEMailDeliveryOption"/>
+
+                    <element name="faxOptions" nillable="true" type="impl:ArrayOfFaxDeliveryOption"/>
+
+                    <element name="ftpOptions" nillable="true" type="impl:ArrayOfFTPDeliveryOption"/>
+
+                    <element name="localOptions" nillable="true" type="impl:ArrayOfLocalDeliveryOption"/>
+
+                    <element name="printOptions" nillable="true" type="impl:ArrayOfPrintDeliveryOption"/>
+
+                    <element name="wccOptions" nillable="true" type="impl:ArrayOfWCCDeliveryOption"/>
+
+                    <element name="webDAVOptions" nillable="true" type="impl:ArrayOfWebDAVDeliveryOption"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="MetaData">
+
+                <sequence>
+
+                    <element name="metaDataName" nillable="true" type="xsd:string"/>
+
+                    <element name="metaDataValue" nillable="true" type="xsd:string"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ArrayOfMetaData">
+
+                <sequence>
+
+                    <element name="item" type="impl:MetaData" minOccurs="0" maxOccurs="unbounded"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="MetaDataList">
+
+                <sequence>
+
+                    <element name="metaDataList" nillable="true" type="impl:ArrayOfMetaData"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="JDBCDataSource">
+
+                <sequence>
+
+                    <element name="JDBCDriverClass" nillable="true" type="xsd:string"/>
+
+                    <element name="JDBCDriverType" nillable="true" type="xsd:string"/>
+
+                    <element name="JDBCPassword" nillable="true" type="xsd:string"/>
+
+                    <element name="JDBCURL" nillable="true" type="xsd:string"/>
+
+                    <element name="JDBCUserName" nillable="true" type="xsd:string"/>
+
+                    <element name="dataSourceName" nillable="true" type="xsd:string"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="FileDataSource">
+
+                <sequence>
+
+                    <element name="dynamicDataSourcePath" nillable="true" type="xsd:string"/>
+
+                    <element name="temporaryDataSource" type="xsd:boolean"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="BIPDataSource">
+
+                <sequence>
+
+                    <element name="JDBCDataSource" nillable="true" type="impl:JDBCDataSource"/>
+
+                    <element name="fileDataSource" nillable="true" type="impl:FileDataSource"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ArrayOfString">
+
+                <sequence>
+
+                    <element name="item" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ParamNameValue">
+
+                <sequence>
+
+                    <element name="UIType" nillable="true" type="xsd:string"/>
+
+                    <element name="dataType" nillable="true" type="xsd:string"/>
+
+                    <element name="dateFormatString" nillable="true" type="xsd:string"/>
+
+                    <element name="dateFrom" nillable="true" type="xsd:string"/>
+
+                    <element name="dateTo" nillable="true" type="xsd:string"/>
+
+                    <element name="defaultValue" nillable="true" type="xsd:string"/>
+
+                    <element name="fieldSize" nillable="true" type="xsd:string"/>
+
+                    <element name="label" nillable="true" type="xsd:string"/>
+
+                    <element name="lovLabels" nillable="true" type="impl:ArrayOfString"/>
+
+                    <element name="multiValuesAllowed" type="xsd:boolean"/>
+
+                    <element name="name" nillable="true" type="xsd:string"/>
+
+                    <element name="refreshParamOnChange" type="xsd:boolean"/>
+
+                    <element name="selectAll" type="xsd:boolean"/>
+
+                    <element name="templateParam" type="xsd:boolean"/>
+
+                    <element name="useNullForAll" type="xsd:boolean"/>
+
+                    <element name="values" nillable="true" type="impl:ArrayOfString"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ArrayOfParamNameValue">
+
+                <sequence>
+
+                    <element name="item" type="impl:ParamNameValue" minOccurs="0" maxOccurs="unbounded"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ParamNameValues">
+
+                <sequence>
+
+                    <element name="listOfParamNameValues" nillable="true" type="impl:ArrayOfParamNameValue"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ReportRequest">
+
+                <sequence>
+
+                    <element name="XDOPropertyList" nillable="true" type="impl:MetaDataList"/>
+
+                    <element name="attributeCalendar" nillable="true" type="xsd:string"/>
+
+                    <element name="attributeFormat" nillable="true" type="xsd:string"/>
+
+                    <element name="attributeLocale" nillable="true" type="xsd:string"/>
+
+                    <element name="attributeTemplate" nillable="true" type="xsd:string"/>
+
+                    <element name="attributeTimezone" nillable="true" type="xsd:string"/>
+
+                    <element name="byPassCache" type="xsd:boolean"/>
+
+                    <element name="dynamicDataSource" nillable="true" type="impl:BIPDataSource"/>
+
+                    <element name="flattenXML" type="xsd:boolean"/>
+
+                    <element name="parameterNameValues" nillable="true" type="impl:ParamNameValues"/>
+
+                    <element name="reportAbsolutePath" nillable="true" type="xsd:string"/>
+
+                    <element name="reportData" nillable="true" type="xsd:base64Binary"/>
+
+                    <element name="reportOutputPath" nillable="true" type="xsd:string"/>
+
+                    <element name="reportRawData" nillable="true" type="xsd:string"/>
+
+                    <element name="sizeOfDataChunkDownload" type="xsd:int"/>
+
+                </sequence>
+
+            </complexType>
+
+            <complexType name="ScheduleRequest">
+
+                <sequence>
+
+                    <element name="bookBindingOutputOption" type="xsd:boolean"/>
+
+                    <element name="compressDeliveryOutputOption" type="xsd:boolean"/>
+
+                    <element name="dataModelUrl" nillable="true" type="xsd:string"/>
+
+                    <element name="deliveryChannels" nillable="true" type="impl:DeliveryChannels"/>
+
+                    <element name="enableConsolidatedJobDiagnostic" type="xsd:boolean"/>
+
+                    <element name="enableDataEngineDiagnostic" type="xsd:boolean"/>
+
+                    <element name="enableReportProcessorDiagnostic" type="xsd:boolean"/>
+
+                    <element name="enableSQLExplainPlan" type="xsd:boolean"/>
+
+                    <element name="enableXmlPruning" type="xsd:boolean"/>
+
+                    <element name="endDate" nillable="true" type="xsd:string"/>
+
+                    <element name="jobLocale" nillable="true" type="xsd:string"/>
+
+                    <element name="jobTZ" nillable="true" type="xsd:string"/>
+
+                    <element name="mergeOutputOption" type="xsd:boolean"/>
+
+                    <element name="notificationPassword" nillable="true" type="xsd:string"/>
+
+                    <element name="notificationServer" nillable="true" type="xsd:string"/>
+
+                    <element name="notificationTo" nillable="true" type="xsd:string"/>
+
+                    <element name="notificationUserName" nillable="true" type="xsd:string"/>
+
+                    <element name="notifyHttpWhenFailed" type="xsd:boolean"/>
+
+                    <element name="notifyHttpWhenSkipped" type="xsd:boolean"/>
+
+                    <element name="notifyHttpWhenSuccess" type="xsd:boolean"/>
+
+                    <element name="notifyHttpWhenWarning" type="xsd:boolean"/>
+
+                    <element name="notifyWhenFailed" type="xsd:boolean"/>
+
+                    <element name="notifyWhenSkipped" type="xsd:boolean"/>
+
+                    <element name="notifyWhenSuccess" type="xsd:boolean"/>
+
+                    <element name="notifyWhenWarning" type="xsd:boolean"/>
+
+                    <element name="recurrenceExpression" nillable="true" type="xsd:string"/>
+
+                    <element name="recurrenceExpressionType" nillable="true" type="xsd:string"/>
+
+                    <element name="repeatCount" type="xsd:int"/>
+
+                    <element name="repeatInterval" type="xsd:int"/>
+
+                    <element name="reportRequest" nillable="true" type="impl:ReportRequest"/>
+
+                    <element name="saveDataOption" type="xsd:boolean"/>
+
+                    <element name="saveOutputOption" type="xsd:boolean"/>
+
+                    <element name="scheduleBurstingOption" type="xsd:boolean"/>
+
+                    <element name="scheduleBurstringOption" type="xsd:boolean"/>
+
+                    <element name="scheduleChunkingOption" minOccurs="0" type="xsd:boolean"/>
+
+                    <element name="schedulePublicOption" type="xsd:boolean"/>
+
+                    <element name="startDate" nillable="true" type="xsd:string"/>
+
+                    <element name="useUTF8Option" type="xsd:boolean"/>
+
+                    <element name="userJobDesc" nillable="true" type="xsd:string"/>
+
+                    <element name="userJobName" nillable="true" type="xsd:string"/>
+
+                </sequence>
+
+            </complexType>
+
+            <element name="scheduleReportResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="scheduleReportReturn" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="scheduleReportInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="scheduleRequest" type="impl:ScheduleRequest"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="scheduleReportInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="scheduleReportInSessionReturn" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="deleteSchedule">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobInstanceID" type="xsd:string"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="deleteScheduleResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="deleteScheduleReturn" type="xsd:boolean"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="deleteScheduleInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobInstanceID" type="xsd:string"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="deleteScheduleInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="deleteScheduleInSessionReturn" type="xsd:boolean"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="resumeSchedule">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobInstanceID" type="xsd:string"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="resumeScheduleResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="resumeScheduleReturn" type="xsd:boolean"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="resumeScheduleInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobInstanceID" type="xsd:string"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="resumeScheduleInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="resumeScheduleInSessionReturn" type="xsd:boolean"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="suspendSchedule">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobInstanceID" type="xsd:string"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="suspendScheduleResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="suspendScheduleReturn" type="xsd:boolean"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="suspendScheduleInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobInstanceID" type="xsd:string"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="suspendScheduleInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="suspendScheduleInSessionReturn" type="xsd:boolean"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="cancelSchedule">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobInstanceID" type="xsd:string"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="cancelScheduleResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="cancelScheduleReturn" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="cancelScheduleInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="jobInstanceID" type="xsd:string"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="cancelScheduleInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="cancelScheduleInSessionReturn" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getDeliveryServiceDefinition">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getDeliveryServiceDefinitionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getDeliveryServiceDefinitionReturn" type="impl:DeliveryServiceDefinition"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <complexType name="DeliveryServiceDefinition">
+
+                <sequence>
+
+                    <element name="EMailServerNames" nillable="true" type="impl:ArrayOfString"/>
+
+                    <element name="FTPServerNames" nillable="true" type="impl:ArrayOfString"/>
+
+                    <element name="HTTPServerNames" nillable="true" type="impl:ArrayOfString"/>
+
+                    <element name="SFTPServerNames" nillable="true" type="impl:ArrayOfString"/>
+
+                    <element name="defaultServerNames" nillable="true" type="impl:ArrayOfString"/>
+
+                    <element name="faxServerNames" nillable="true" type="impl:ArrayOfString"/>
+
+                    <element name="printerNames" nillable="true" type="impl:ArrayOfString"/>
+
+                    <element name="webDAVServerNames" nillable="true" type="impl:ArrayOfString"/>
+
+                    <element name="wccServerNames" nillable="true" type="impl:ArrayOfString"/>
+
+                </sequence>
+
+            </complexType>
+
+            <element name="getDeliveryServiceDefinitionInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="getDeliveryServiceDefinitionInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="getDeliveryServiceDefinitionInSessionReturn"
+                                 type="impl:DeliveryServiceDefinition"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="deliveryService">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="deliveryRequest" type="impl:DeliveryRequest"/>
+
+                        <element name="userID" type="xsd:string"/>
+
+                        <element name="password" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <complexType name="DeliveryRequest">
+
+                <sequence>
+
+                    <element name="contentType" nillable="true" type="xsd:string"/>
+
+                    <element name="deliveryChannels" nillable="true" type="impl:DeliveryChannels"/>
+
+                    <element name="documentData" nillable="true" type="xsd:base64Binary"/>
+
+                    <element name="dynamicDataSource" nillable="true" type="impl:BIPDataSource"/>
+
+                </sequence>
+
+            </complexType>
+
+            <element name="deliveryServiceResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="deliveryServiceReturn" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="deliveryServiceInSession">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="deliveryRequest" type="impl:DeliveryRequest"/>
+
+                        <element name="bipSessionToken" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+            <element name="deliveryServiceInSessionResponse">
+
+                <complexType>
+
+                    <sequence>
+
+                        <element name="deliveryServiceInSessionReturn" type="xsd:string"/>
+
+                    </sequence>
+
+                </complexType>
+
+            </element>
+
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="getDocumentDataRequest">
+        <wsdl:part name="parameters" element="impl:getDocumentData"/>
+    </wsdl:message>
+    <wsdl:message name="getDocumentDataResponse">
+        <wsdl:part name="parameters" element="impl:getDocumentDataResponse"/>
+    </wsdl:message>
+    <wsdl:message name="AccessDeniedException">
+        <wsdl:part name="fault" element="impl:fault"/>
+    </wsdl:message>
+    <wsdl:message name="OperationFailedException">
+        <wsdl:part name="fault" element="impl:fault2"/>
+    </wsdl:message>
+    <wsdl:message name="InvalidParametersException">
+        <wsdl:part name="fault" element="impl:fault1"/>
+    </wsdl:message>
+    <wsdl:message name="getAllScheduledReportRequest">
+        <wsdl:part name="parameters" element="impl:getAllScheduledReport"/>
+    </wsdl:message>
+    <wsdl:message name="getAllScheduledReportResponse">
+        <wsdl:part name="parameters" element="impl:getAllScheduledReportResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getAllScheduledReportInSessionRequest">
+        <wsdl:part name="parameters" element="impl:getAllScheduledReportInSession"/>
+    </wsdl:message>
+    <wsdl:message name="getAllScheduledReportInSessionResponse">
+        <wsdl:part name="parameters" element="impl:getAllScheduledReportInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getScheduledJobInfoRequest">
+        <wsdl:part name="parameters" element="impl:getScheduledJobInfo"/>
+    </wsdl:message>
+    <wsdl:message name="getScheduledJobInfoResponse">
+        <wsdl:part name="parameters" element="impl:getScheduledJobInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getScheduledJobInfoInSessionRequest">
+        <wsdl:part name="parameters" element="impl:getScheduledJobInfoInSession"/>
+    </wsdl:message>
+    <wsdl:message name="getScheduledJobInfoInSessionResponse">
+        <wsdl:part name="parameters" element="impl:getScheduledJobInfoInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getScheduledReportStatusRequest">
+        <wsdl:part name="parameters" element="impl:getScheduledReportStatus"/>
+    </wsdl:message>
+    <wsdl:message name="getScheduledReportStatusResponse">
+        <wsdl:part name="parameters" element="impl:getScheduledReportStatusResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getScheduledReportStatusInSessionRequest">
+        <wsdl:part name="parameters" element="impl:getScheduledReportStatusInSession"/>
+    </wsdl:message>
+    <wsdl:message name="getScheduledReportStatusInSessionResponse">
+        <wsdl:part name="parameters" element="impl:getScheduledReportStatusInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getAllScheduledReportHistoryRequest">
+        <wsdl:part name="parameters" element="impl:getAllScheduledReportHistory"/>
+    </wsdl:message>
+    <wsdl:message name="getAllScheduledReportHistoryResponse">
+        <wsdl:part name="parameters" element="impl:getAllScheduledReportHistoryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getAllScheduledReportHistoryInSessionRequest">
+        <wsdl:part name="parameters" element="impl:getAllScheduledReportHistoryInSession"/>
+    </wsdl:message>
+    <wsdl:message name="getAllScheduledReportHistoryInSessionResponse">
+        <wsdl:part name="parameters" element="impl:getAllScheduledReportHistoryInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getScheduledReportOutputInfoRequest">
+        <wsdl:part name="parameters" element="impl:getScheduledReportOutputInfo"/>
+    </wsdl:message>
+    <wsdl:message name="getScheduledReportOutputInfoResponse">
+        <wsdl:part name="parameters" element="impl:getScheduledReportOutputInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getScheduledReportOutputInfoInSessionRequest">
+        <wsdl:part name="parameters" element="impl:getScheduledReportOutputInfoInSession"/>
+    </wsdl:message>
+    <wsdl:message name="getScheduledReportOutputInfoInSessionResponse">
+        <wsdl:part name="parameters" element="impl:getScheduledReportOutputInfoInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getDocumentDataInSessionRequest">
+        <wsdl:part name="parameters" element="impl:getDocumentDataInSession"/>
+    </wsdl:message>
+    <wsdl:message name="getDocumentDataInSessionResponse">
+        <wsdl:part name="parameters" element="impl:getDocumentDataInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="downloadDocumentDataRequest">
+        <wsdl:part name="parameters" element="impl:downloadDocumentData"/>
+    </wsdl:message>
+    <wsdl:message name="downloadDocumentDataResponse">
+        <wsdl:part name="parameters" element="impl:downloadDocumentDataResponse"/>
+    </wsdl:message>
+    <wsdl:message name="downloadDocumentDataInSessionRequest">
+        <wsdl:part name="parameters" element="impl:downloadDocumentDataInSession"/>
+    </wsdl:message>
+    <wsdl:message name="downloadDocumentDataInSessionResponse">
+        <wsdl:part name="parameters" element="impl:downloadDocumentDataInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getXMLDataRequest">
+        <wsdl:part name="parameters" element="impl:getXMLData"/>
+    </wsdl:message>
+    <wsdl:message name="getXMLDataResponse">
+        <wsdl:part name="parameters" element="impl:getXMLDataResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getXMLDataInSessionRequest">
+        <wsdl:part name="parameters" element="impl:getXMLDataInSession"/>
+    </wsdl:message>
+    <wsdl:message name="getXMLDataInSessionResponse">
+        <wsdl:part name="parameters" element="impl:getXMLDataInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="downloadXMLDataRequest">
+        <wsdl:part name="parameters" element="impl:downloadXMLData"/>
+    </wsdl:message>
+    <wsdl:message name="downloadXMLDataResponse">
+        <wsdl:part name="parameters" element="impl:downloadXMLDataResponse"/>
+    </wsdl:message>
+    <wsdl:message name="downloadXMLDataInSessionRequest">
+        <wsdl:part name="parameters" element="impl:downloadXMLDataInSession"/>
+    </wsdl:message>
+    <wsdl:message name="downloadXMLDataInSessionResponse">
+        <wsdl:part name="parameters" element="impl:downloadXMLDataInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="resendScheduledReportRequest">
+        <wsdl:part name="parameters" element="impl:resendScheduledReport"/>
+    </wsdl:message>
+    <wsdl:message name="resendScheduledReportResponse">
+        <wsdl:part name="parameters" element="impl:resendScheduledReportResponse"/>
+    </wsdl:message>
+    <wsdl:message name="resendScheduledReportInSessionRequest">
+        <wsdl:part name="parameters" element="impl:resendScheduledReportInSession"/>
+    </wsdl:message>
+    <wsdl:message name="resendScheduledReportInSessionResponse">
+        <wsdl:part name="parameters" element="impl:resendScheduledReportInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteJobHistoryRequest">
+        <wsdl:part name="parameters" element="impl:deleteJobHistory"/>
+    </wsdl:message>
+    <wsdl:message name="deleteJobHistoryResponse">
+        <wsdl:part name="parameters" element="impl:deleteJobHistoryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteJobHistoryInSessionRequest">
+        <wsdl:part name="parameters" element="impl:deleteJobHistoryInSession"/>
+    </wsdl:message>
+    <wsdl:message name="deleteJobHistoryInSessionResponse">
+        <wsdl:part name="parameters" element="impl:deleteJobHistoryInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="purgeJobHistoryRequest">
+        <wsdl:part name="parameters" element="impl:purgeJobHistory"/>
+    </wsdl:message>
+    <wsdl:message name="purgeJobHistoryResponse">
+        <wsdl:part name="parameters" element="impl:purgeJobHistoryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="purgeJobHistoryInSessionRequest">
+        <wsdl:part name="parameters" element="impl:purgeJobHistoryInSession"/>
+    </wsdl:message>
+    <wsdl:message name="purgeJobHistoryInSessionResponse">
+        <wsdl:part name="parameters" element="impl:purgeJobHistoryInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getScheduledReportDeliveryInfoRequest">
+        <wsdl:part name="parameters" element="impl:getScheduledReportDeliveryInfo"/>
+    </wsdl:message>
+    <wsdl:message name="getScheduledReportDeliveryInfoResponse">
+        <wsdl:part name="parameters" element="impl:getScheduledReportDeliveryInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getScheduledReportDeliveryInfoInSessionRequest">
+        <wsdl:part name="parameters" element="impl:getScheduledReportDeliveryInfoInSession"/>
+    </wsdl:message>
+    <wsdl:message name="getScheduledReportDeliveryInfoInSessionResponse">
+        <wsdl:part name="parameters" element="impl:getScheduledReportDeliveryInfoInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="scheduleReportRequest">
+        <wsdl:part name="parameters" element="impl:scheduleReport"/>
+    </wsdl:message>
+    <wsdl:message name="scheduleReportResponse">
+        <wsdl:part name="parameters" element="impl:scheduleReportResponse"/>
+    </wsdl:message>
+    <wsdl:message name="scheduleReportInSessionRequest">
+        <wsdl:part name="parameters" element="impl:scheduleReportInSession"/>
+    </wsdl:message>
+    <wsdl:message name="scheduleReportInSessionResponse">
+        <wsdl:part name="parameters" element="impl:scheduleReportInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteScheduleRequest">
+        <wsdl:part name="parameters" element="impl:deleteSchedule"/>
+    </wsdl:message>
+    <wsdl:message name="deleteScheduleResponse">
+        <wsdl:part name="parameters" element="impl:deleteScheduleResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteScheduleInSessionRequest">
+        <wsdl:part name="parameters" element="impl:deleteScheduleInSession"/>
+    </wsdl:message>
+    <wsdl:message name="deleteScheduleInSessionResponse">
+        <wsdl:part name="parameters" element="impl:deleteScheduleInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="resumeScheduleRequest">
+        <wsdl:part name="parameters" element="impl:resumeSchedule"/>
+    </wsdl:message>
+    <wsdl:message name="resumeScheduleResponse">
+        <wsdl:part name="parameters" element="impl:resumeScheduleResponse"/>
+    </wsdl:message>
+    <wsdl:message name="resumeScheduleInSessionRequest">
+        <wsdl:part name="parameters" element="impl:resumeScheduleInSession"/>
+    </wsdl:message>
+    <wsdl:message name="resumeScheduleInSessionResponse">
+        <wsdl:part name="parameters" element="impl:resumeScheduleInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="suspendScheduleRequest">
+        <wsdl:part name="parameters" element="impl:suspendSchedule"/>
+    </wsdl:message>
+    <wsdl:message name="suspendScheduleResponse">
+        <wsdl:part name="parameters" element="impl:suspendScheduleResponse"/>
+    </wsdl:message>
+    <wsdl:message name="suspendScheduleInSessionRequest">
+        <wsdl:part name="parameters" element="impl:suspendScheduleInSession"/>
+    </wsdl:message>
+    <wsdl:message name="suspendScheduleInSessionResponse">
+        <wsdl:part name="parameters" element="impl:suspendScheduleInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="cancelScheduleRequest">
+        <wsdl:part name="parameters" element="impl:cancelSchedule"/>
+    </wsdl:message>
+    <wsdl:message name="cancelScheduleResponse">
+        <wsdl:part name="parameters" element="impl:cancelScheduleResponse"/>
+    </wsdl:message>
+    <wsdl:message name="cancelScheduleInSessionRequest">
+        <wsdl:part name="parameters" element="impl:cancelScheduleInSession"/>
+    </wsdl:message>
+    <wsdl:message name="cancelScheduleInSessionResponse">
+        <wsdl:part name="parameters" element="impl:cancelScheduleInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getDeliveryServiceDefinitionRequest">
+        <wsdl:part name="parameters" element="impl:getDeliveryServiceDefinition"/>
+    </wsdl:message>
+    <wsdl:message name="getDeliveryServiceDefinitionResponse">
+        <wsdl:part name="parameters" element="impl:getDeliveryServiceDefinitionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getDeliveryServiceDefinitionInSessionRequest">
+        <wsdl:part name="parameters" element="impl:getDeliveryServiceDefinitionInSession"/>
+    </wsdl:message>
+    <wsdl:message name="getDeliveryServiceDefinitionInSessionResponse">
+        <wsdl:part name="parameters" element="impl:getDeliveryServiceDefinitionInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deliveryServiceRequest">
+        <wsdl:part name="parameters" element="impl:deliveryService"/>
+    </wsdl:message>
+    <wsdl:message name="deliveryServiceResponse">
+        <wsdl:part name="parameters" element="impl:deliveryServiceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deliveryServiceInSessionRequest">
+        <wsdl:part name="parameters" element="impl:deliveryServiceInSession"/>
+    </wsdl:message>
+    <wsdl:message name="deliveryServiceInSessionResponse">
+        <wsdl:part name="parameters" element="impl:deliveryServiceInSessionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getAllJobInstanceIDsRequest">
+        <wsdl:part name="parameters" element="impl:getAllJobInstanceIDs"/>
+    </wsdl:message>
+    <wsdl:message name="getAllJobInstanceIDsResponse">
+        <wsdl:part name="parameters" element="impl:getAllJobInstanceIDsResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="ScheduleServiceConsumer">
+        <wsdl:operation name="getDocumentData">
+            <wsdl:input name="getDocumentDataRequest" message="impl:getDocumentDataRequest"/>
+            <wsdl:output name="getDocumentDataResponse" message="impl:getDocumentDataResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAllScheduledReport">
+            <wsdl:input name="getAllScheduledReportRequest" message="impl:getAllScheduledReportRequest"/>
+            <wsdl:output name="getAllScheduledReportResponse" message="impl:getAllScheduledReportResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAllScheduledReportInSession">
+            <wsdl:input name="getAllScheduledReportInSessionRequest"
+                        message="impl:getAllScheduledReportInSessionRequest"/>
+            <wsdl:output name="getAllScheduledReportInSessionResponse"
+                         message="impl:getAllScheduledReportInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getScheduledJobInfo">
+            <wsdl:input name="getScheduledJobInfoRequest" message="impl:getScheduledJobInfoRequest"/>
+            <wsdl:output name="getScheduledJobInfoResponse" message="impl:getScheduledJobInfoResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getScheduledJobInfoInSession">
+            <wsdl:input name="getScheduledJobInfoInSessionRequest" message="impl:getScheduledJobInfoInSessionRequest"/>
+            <wsdl:output name="getScheduledJobInfoInSessionResponse"
+                         message="impl:getScheduledJobInfoInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getScheduledReportStatus">
+            <wsdl:input name="getScheduledReportStatusRequest" message="impl:getScheduledReportStatusRequest"/>
+            <wsdl:output name="getScheduledReportStatusResponse" message="impl:getScheduledReportStatusResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getScheduledReportStatusInSession">
+            <wsdl:input name="getScheduledReportStatusInSessionRequest"
+                        message="impl:getScheduledReportStatusInSessionRequest"/>
+            <wsdl:output name="getScheduledReportStatusInSessionResponse"
+                         message="impl:getScheduledReportStatusInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAllScheduledReportHistory">
+            <wsdl:input name="getAllScheduledReportHistoryRequest" message="impl:getAllScheduledReportHistoryRequest"/>
+            <wsdl:output name="getAllScheduledReportHistoryResponse"
+                         message="impl:getAllScheduledReportHistoryResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAllScheduledReportHistoryInSession">
+            <wsdl:input name="getAllScheduledReportHistoryInSessionRequest"
+                        message="impl:getAllScheduledReportHistoryInSessionRequest"/>
+            <wsdl:output name="getAllScheduledReportHistoryInSessionResponse"
+                         message="impl:getAllScheduledReportHistoryInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getScheduledReportOutputInfo">
+            <wsdl:input name="getScheduledReportOutputInfoRequest" message="impl:getScheduledReportOutputInfoRequest"/>
+            <wsdl:output name="getScheduledReportOutputInfoResponse"
+                         message="impl:getScheduledReportOutputInfoResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getScheduledReportOutputInfoInSession">
+            <wsdl:input name="getScheduledReportOutputInfoInSessionRequest"
+                        message="impl:getScheduledReportOutputInfoInSessionRequest"/>
+            <wsdl:output name="getScheduledReportOutputInfoInSessionResponse"
+                         message="impl:getScheduledReportOutputInfoInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDocumentDataInSession">
+            <wsdl:input name="getDocumentDataInSessionRequest" message="impl:getDocumentDataInSessionRequest"/>
+            <wsdl:output name="getDocumentDataInSessionResponse" message="impl:getDocumentDataInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="downloadDocumentData">
+            <wsdl:input name="downloadDocumentDataRequest" message="impl:downloadDocumentDataRequest"/>
+            <wsdl:output name="downloadDocumentDataResponse" message="impl:downloadDocumentDataResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="downloadDocumentDataInSession">
+            <wsdl:input name="downloadDocumentDataInSessionRequest"
+                        message="impl:downloadDocumentDataInSessionRequest"/>
+            <wsdl:output name="downloadDocumentDataInSessionResponse"
+                         message="impl:downloadDocumentDataInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getXMLData">
+            <wsdl:input name="getXMLDataRequest" message="impl:getXMLDataRequest"/>
+            <wsdl:output name="getXMLDataResponse" message="impl:getXMLDataResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getXMLDataInSession">
+            <wsdl:input name="getXMLDataInSessionRequest" message="impl:getXMLDataInSessionRequest"/>
+            <wsdl:output name="getXMLDataInSessionResponse" message="impl:getXMLDataInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="downloadXMLData">
+            <wsdl:input name="downloadXMLDataRequest" message="impl:downloadXMLDataRequest"/>
+            <wsdl:output name="downloadXMLDataResponse" message="impl:downloadXMLDataResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="downloadXMLDataInSession">
+            <wsdl:input name="downloadXMLDataInSessionRequest" message="impl:downloadXMLDataInSessionRequest"/>
+            <wsdl:output name="downloadXMLDataInSessionResponse" message="impl:downloadXMLDataInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="resendScheduledReport">
+            <wsdl:input name="resendScheduledReportRequest" message="impl:resendScheduledReportRequest"/>
+            <wsdl:output name="resendScheduledReportResponse" message="impl:resendScheduledReportResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="resendScheduledReportInSession">
+            <wsdl:input name="resendScheduledReportInSessionRequest"
+                        message="impl:resendScheduledReportInSessionRequest"/>
+            <wsdl:output name="resendScheduledReportInSessionResponse"
+                         message="impl:resendScheduledReportInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteJobHistory">
+            <wsdl:input name="deleteJobHistoryRequest" message="impl:deleteJobHistoryRequest"/>
+            <wsdl:output name="deleteJobHistoryResponse" message="impl:deleteJobHistoryResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteJobHistoryInSession">
+            <wsdl:input name="deleteJobHistoryInSessionRequest" message="impl:deleteJobHistoryInSessionRequest"/>
+            <wsdl:output name="deleteJobHistoryInSessionResponse" message="impl:deleteJobHistoryInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="purgeJobHistory">
+            <wsdl:input name="purgeJobHistoryRequest" message="impl:purgeJobHistoryRequest"/>
+            <wsdl:output name="purgeJobHistoryResponse" message="impl:purgeJobHistoryResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="purgeJobHistoryInSession">
+            <wsdl:input name="purgeJobHistoryInSessionRequest" message="impl:purgeJobHistoryInSessionRequest"/>
+            <wsdl:output name="purgeJobHistoryInSessionResponse" message="impl:purgeJobHistoryInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getScheduledReportDeliveryInfo">
+            <wsdl:input name="getScheduledReportDeliveryInfoRequest"
+                        message="impl:getScheduledReportDeliveryInfoRequest"/>
+            <wsdl:output name="getScheduledReportDeliveryInfoResponse"
+                         message="impl:getScheduledReportDeliveryInfoResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getScheduledReportDeliveryInfoInSession">
+            <wsdl:input name="getScheduledReportDeliveryInfoInSessionRequest"
+                        message="impl:getScheduledReportDeliveryInfoInSessionRequest"/>
+            <wsdl:output name="getScheduledReportDeliveryInfoInSessionResponse"
+                         message="impl:getScheduledReportDeliveryInfoInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="scheduleReport">
+            <wsdl:input name="scheduleReportRequest" message="impl:scheduleReportRequest"/>
+            <wsdl:output name="scheduleReportResponse" message="impl:scheduleReportResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="scheduleReportInSession">
+            <wsdl:input name="scheduleReportInSessionRequest" message="impl:scheduleReportInSessionRequest"/>
+            <wsdl:output name="scheduleReportInSessionResponse" message="impl:scheduleReportInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteSchedule">
+            <wsdl:input name="deleteScheduleRequest" message="impl:deleteScheduleRequest"/>
+            <wsdl:output name="deleteScheduleResponse" message="impl:deleteScheduleResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteScheduleInSession">
+            <wsdl:input name="deleteScheduleInSessionRequest" message="impl:deleteScheduleInSessionRequest"/>
+            <wsdl:output name="deleteScheduleInSessionResponse" message="impl:deleteScheduleInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="resumeSchedule">
+            <wsdl:input name="resumeScheduleRequest" message="impl:resumeScheduleRequest"/>
+            <wsdl:output name="resumeScheduleResponse" message="impl:resumeScheduleResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="resumeScheduleInSession">
+            <wsdl:input name="resumeScheduleInSessionRequest" message="impl:resumeScheduleInSessionRequest"/>
+            <wsdl:output name="resumeScheduleInSessionResponse" message="impl:resumeScheduleInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="suspendSchedule">
+            <wsdl:input name="suspendScheduleRequest" message="impl:suspendScheduleRequest"/>
+            <wsdl:output name="suspendScheduleResponse" message="impl:suspendScheduleResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="suspendScheduleInSession">
+            <wsdl:input name="suspendScheduleInSessionRequest" message="impl:suspendScheduleInSessionRequest"/>
+            <wsdl:output name="suspendScheduleInSessionResponse" message="impl:suspendScheduleInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="cancelSchedule">
+            <wsdl:input name="cancelScheduleRequest" message="impl:cancelScheduleRequest"/>
+            <wsdl:output name="cancelScheduleResponse" message="impl:cancelScheduleResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="cancelScheduleInSession">
+            <wsdl:input name="cancelScheduleInSessionRequest" message="impl:cancelScheduleInSessionRequest"/>
+            <wsdl:output name="cancelScheduleInSessionResponse" message="impl:cancelScheduleInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDeliveryServiceDefinition">
+            <wsdl:input name="getDeliveryServiceDefinitionRequest" message="impl:getDeliveryServiceDefinitionRequest"/>
+            <wsdl:output name="getDeliveryServiceDefinitionResponse"
+                         message="impl:getDeliveryServiceDefinitionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDeliveryServiceDefinitionInSession">
+            <wsdl:input name="getDeliveryServiceDefinitionInSessionRequest"
+                        message="impl:getDeliveryServiceDefinitionInSessionRequest"/>
+            <wsdl:output name="getDeliveryServiceDefinitionInSessionResponse"
+                         message="impl:getDeliveryServiceDefinitionInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+        </wsdl:operation>
+        <wsdl:operation name="deliveryService">
+            <wsdl:input name="deliveryServiceRequest" message="impl:deliveryServiceRequest"/>
+            <wsdl:output name="deliveryServiceResponse" message="impl:deliveryServiceResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="deliveryServiceInSession">
+            <wsdl:input name="deliveryServiceInSessionRequest" message="impl:deliveryServiceInSessionRequest"/>
+            <wsdl:output name="deliveryServiceInSessionResponse" message="impl:deliveryServiceInSessionResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAllJobInstanceIDs">
+            <wsdl:input name="getAllJobInstanceIDsRequest" message="impl:getAllJobInstanceIDsRequest"/>
+            <wsdl:output name="getAllJobInstanceIDsResponse" message="impl:getAllJobInstanceIDsResponse"/>
+            <wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException"/>
+            <wsdl:fault name="OperationFailedException" message="impl:OperationFailedException"/>
+            <wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ScheduleServiceSoapBinding" type="impl:ScheduleServiceConsumer">
+        <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getDocumentData">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getDocumentDataRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getDocumentDataResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllJobInstanceIDs">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getAllJobInstanceIDsRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getAllJobInstanceIDsResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllScheduledReport">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getAllScheduledReportRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getAllScheduledReportResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllScheduledReportInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getAllScheduledReportInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getAllScheduledReportInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getScheduledJobInfo">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getScheduledJobInfoRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getScheduledJobInfoResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getScheduledJobInfoInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getScheduledJobInfoInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getScheduledJobInfoInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getScheduledReportStatus">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getScheduledReportStatusRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getScheduledReportStatusResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getScheduledReportStatusInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getScheduledReportStatusInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getScheduledReportStatusInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllScheduledReportHistory">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getAllScheduledReportHistoryRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getAllScheduledReportHistoryResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllScheduledReportHistoryInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getAllScheduledReportHistoryInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getAllScheduledReportHistoryInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getScheduledReportOutputInfo">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getScheduledReportOutputInfoRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getScheduledReportOutputInfoResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getScheduledReportOutputInfoInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getScheduledReportOutputInfoInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getScheduledReportOutputInfoInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getDocumentDataInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getDocumentDataInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getDocumentDataInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="downloadDocumentData">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="downloadDocumentDataRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="downloadDocumentDataResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="downloadDocumentDataInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="downloadDocumentDataInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="downloadDocumentDataInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getXMLData">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getXMLDataRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getXMLDataResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getXMLDataInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getXMLDataInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getXMLDataInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="downloadXMLData">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="downloadXMLDataRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="downloadXMLDataResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="downloadXMLDataInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="downloadXMLDataInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="downloadXMLDataInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="resendScheduledReport">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="resendScheduledReportRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="resendScheduledReportResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="resendScheduledReportInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="resendScheduledReportInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="resendScheduledReportInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteJobHistory">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="deleteJobHistoryRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deleteJobHistoryResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteJobHistoryInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="deleteJobHistoryInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deleteJobHistoryInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="purgeJobHistory">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="purgeJobHistoryRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="purgeJobHistoryResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="purgeJobHistoryInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="purgeJobHistoryInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="purgeJobHistoryInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getScheduledReportDeliveryInfo">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getScheduledReportDeliveryInfoRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getScheduledReportDeliveryInfoResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getScheduledReportDeliveryInfoInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getScheduledReportDeliveryInfoInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getScheduledReportDeliveryInfoInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="scheduleReport">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="scheduleReportRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="scheduleReportResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="scheduleReportInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="scheduleReportInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="scheduleReportInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteSchedule">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="deleteScheduleRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deleteScheduleResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteScheduleInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="deleteScheduleInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deleteScheduleInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="resumeSchedule">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="resumeScheduleRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="resumeScheduleResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="resumeScheduleInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="resumeScheduleInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="resumeScheduleInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="suspendSchedule">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="suspendScheduleRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="suspendScheduleResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="suspendScheduleInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="suspendScheduleInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="suspendScheduleInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="cancelSchedule">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="cancelScheduleRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="cancelScheduleResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="cancelScheduleInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="cancelScheduleInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="cancelScheduleInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getDeliveryServiceDefinition">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getDeliveryServiceDefinitionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getDeliveryServiceDefinitionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getDeliveryServiceDefinitionInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getDeliveryServiceDefinitionInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getDeliveryServiceDefinitionInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deliveryService">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="deliveryServiceRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deliveryServiceResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deliveryServiceInSession">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="deliveryServiceInSessionRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deliveryServiceInSessionResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AccessDeniedException">
+                <wsdlsoap:fault name="AccessDeniedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="OperationFailedException">
+                <wsdlsoap:fault name="OperationFailedException" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="InvalidParametersException">
+                <wsdlsoap:fault name="InvalidParametersException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ScheduleService">
+        <wsdl:port name="ScheduleService" binding="impl:ScheduleServiceSoapBinding">
+            <wsdlsoap:address
+                location="https://fa-errt-dev1-saasfaprod1.fa.ocs.oraclecloud.com:443/xmlpserver/services/v2/ScheduleService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

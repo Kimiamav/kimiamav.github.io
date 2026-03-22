@@ -1,0 +1,57 @@
+package com.scor.peopledoc.web.gui;
+
+
+import ch.qos.logback.core.status.Status;
+import com.scor.peopledoc.exception.ScheduleException;
+import com.scor.peopledoc.service.TransformService;
+import com.scor.peopledoc.service.dto.CountryConst;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpSession;
+import javax.xml.datatype.DatatypeConfigurationException;
+import java.io.IOException;
+import java.nio.file.Path;
+
+@Controller
+@RequestMapping("/hr")
+@Slf4j
+@AllArgsConstructor(onConstructor_ = {@Autowired})
+public class HrConvertController {
+
+    private final TransformService transformService;
+
+    @PostMapping("/convert")
+    public String convert(HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+
+        String fileName = (String) session.getAttribute("fileName");
+        String countryCode = (String) session.getAttribute("country");
+
+        if (fileName == null || countryCode == null) {
+            redirectAttributes.addFlashAttribute("message",
+                "Impossible de lancer la conversion : fichier ou pays manquant. Merci de refaire l’upload.");
+            return "redirect:/hr/uploadfile";
+        }
+
+        try {
+            transformService.adpToPeopleDoc(CountryConst.valueOf(countryCode), fileName);
+
+            model.addAttribute("fileName", fileName);
+            model.addAttribute("country", countryCode);
+
+            return "hr/convert";
+
+        } catch (Exception ex) {
+            redirectAttributes.addFlashAttribute("message",
+                "Échec de la conversion du fichier \"" + fileName + "\" (" + countryCode + "). Détail : " + ex.getMessage());
+            return "redirect:/hr/uploadfile";
+        }
+    }
+}
+

@@ -1,0 +1,36 @@
+package com.scor.peopledoc.exception;
+
+public class TransformException extends RuntimeException{
+    /**
+     * Serial version UID
+     */
+    private static final long serialVersionUID = 840019996986007187L;
+
+    /**
+     * Constructor with message
+     *
+     * @param message Exception Message
+     */
+    public TransformException(String message) {
+        super(message);
+    }
+
+    /**
+     * Constructor with Exception
+     *
+     * @param cause Exception
+     */
+    public TransformException(Throwable cause) {
+        super(cause);
+    }
+
+    /**
+     * Constructor with message and Exception
+     *
+     * @param message Exception Message
+     * @param cause Internal Exception
+     */
+    public TransformException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}

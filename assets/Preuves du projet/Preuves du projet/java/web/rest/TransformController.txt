@@ -1,0 +1,66 @@
+package com.scor.peopledoc.web.rest;
+
+import com.scor.peopledoc.exception.ScheduleException;
+import com.scor.peopledoc.service.BulSalService;
+import com.scor.peopledoc.service.TransformService;
+import com.scor.peopledoc.service.dto.CountryConst;
+import com.scor.peopledoc.service.dto.PsEmployee;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.file.Path;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api/transform")
+@AllArgsConstructor(onConstructor_ = {@Autowired})
+@Slf4j
+public class TransformController {
+    private final TransformService transformService;
+    private final BulSalService bulSalService;
+
+    /**
+     * Launch transformation of filename from ADP format to PeopleDoc format for country.
+     *
+     * @param country the country of the file to transform.
+     * @param filename the filename to be transformed.
+     * @return the path to the transformed file.
+     */
+    @GetMapping("/bulletin/{country}/{filename}")
+    public ResponseEntity<String> transformBulletin(@PathVariable("country") CountryConst country, @PathVariable String filename){
+        try {
+            Path finalFile = this.transformService.adpToPeopleDoc(country, filename);
+            return ResponseEntity.ok(String.format("File %s created", finalFile.toString()));
+        } catch (IOException | DatatypeConfigurationException | ScheduleException | RuntimeException ex) {
+            log.error(ex.getMessage(), ex);
+
+            return ResponseEntity.internalServerError().body(ex.getMessage());
+        }
+    }
+
+    /**
+     * Call People Doc API and returns {@link PsEmployee} list.
+     *
+     * @return the map of {@link PsEmployee}
+     * @throws UnsupportedEncodingException
+     */
+    @GetMapping("/peopledoc")
+    public ResponseEntity<Map<String, PsEmployee>> getBulSal() throws UnsupportedEncodingException{
+        try {
+            return ResponseEntity.ok(this.bulSalService.getBulZipFiles());
+        } catch (RuntimeException | ScheduleException ex) {
+            log.error(ex.getMessage(), ex);
+
+            return ResponseEntity.internalServerError().body(null);
+        }
+    }
+}

@@ -1,0 +1,9 @@
+package com.scor.peopledoc.exception;
+
+public abstract class ScheduleException extends Exception {
+    private static final long serialVersionUID = 1L;
+
+    protected ScheduleException() {
+        super();
+    }
+}

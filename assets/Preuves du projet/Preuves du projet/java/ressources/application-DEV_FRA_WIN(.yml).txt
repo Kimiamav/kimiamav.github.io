@@ -1,0 +1,20 @@
+peopletodoc:
+  rootPath: C:\temp\ADP\IN
+  outputPath: C:\temp\ADP\OUT
+  docByCountryPath: ${peopletodoc.rootPath}\payslips\%s\
+  bulSalServiceUrl: https://errt-dev1.fa.ocs.oraclecloud.com:443
+  userId: scor.integration.reporting
+  password: ScorMe2025!
+  reportAbsolutePath: /Custom/Human Capital Management/for VTOM/SCOR_FOR_PEOPLEDOC.xdo
+logging:
+  pattern:
+    console: "%date | %30.30thread | %15.15mdc{ipAddress} | %15.15mdc{ws_caller_id} | %5.5level | %logger{0}.%method | %msg%n"
+  level:
+    root: ERROR
+    com.scor: DEBUG
+server:
+  error:
+    include-exception: false
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: on_param

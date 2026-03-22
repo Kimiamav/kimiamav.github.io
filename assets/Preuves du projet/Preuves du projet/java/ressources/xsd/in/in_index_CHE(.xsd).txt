@@ -1,0 +1,40 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="docs" type="docsType"/>
+  <xs:complexType name="docType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="file" use="optional"/>
+        <xs:attribute type="xs:byte" name="nb_pages" use="optional"/>
+        <xs:attribute type="xs:int" name="IDMATRIC" use="optional"/>
+        <xs:attribute type="xs:string" name="IDREFDOS" use="optional"/>
+        <xs:attribute type="xs:string" name="IDNOMEMP" use="optional"/>
+        <xs:attribute type="xs:short" name="IDNMETAT" use="optional"/>
+        <xs:attribute type="xs:string" name="IDMODEDT" use="optional"/>
+        <xs:attribute type="xs:string" name="IDLBETAT" use="optional"/>
+        <xs:attribute type="xs:string" name="IDCODSTE" use="optional"/>
+        <xs:attribute type="xs:string" name="IDHABILI" use="optional"/>
+        <xs:attribute type="xs:string" name="IDNUMRSS" use="optional"/>
+        <xs:attribute type="xs:int" name="IDMATRRH" use="optional"/>
+        <xs:attribute type="xs:string" name="IDENTITY" use="optional"/>
+        <xs:attribute type="xs:string" name="IDCRIT01" use="optional"/>
+        <xs:attribute type="xs:string" name="IDCRIT02" use="optional"/>
+        <xs:attribute type="xs:string" name="IDCRIT03" use="optional"/>
+        <xs:attribute type="xs:string" name="IDCRIT04" use="optional"/>
+        <xs:attribute type="xs:string" name="IDCRIT05" use="optional"/>
+        <xs:attribute type="xs:string" name="IDMASSIF" use="optional"/>
+        <xs:attribute type="xs:string" name="IDENCART" use="optional"/>
+        <xs:attribute type="xs:string" name="IDCODPGE" use="optional"/>
+        <xs:attribute type="xs:string" name="IDROUTAG" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="docsType">
+    <xs:sequence>
+      <xs:element type="docType" name="doc" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:short" name="pac"/>
+    <xs:attribute type="xs:int" name="perdpai"/>
+    <xs:attribute type="xs:short" name="nb_pages"/>
+    <xs:attribute type="xs:short" name="nb_bulls"/>
+  </xs:complexType>
+</xs:schema>

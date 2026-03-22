@@ -1,0 +1,51 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Upload - ADP 2P PeopleDoc</title>
+    <link rel="stylesheet" href="../resources/css/hr.css">
+</head>
+<body>
+
+<div class="page">
+    <div class="card">
+        <div class="header">
+            <h1>Upload</h1>
+            <p class="subtitle">Ajouter un PDF et choisir un pays de traitement</p>
+        </div>
+
+        <div class="content">
+            <div class="panel">
+
+                <c:if test="${not empty message}">
+                    <div class="alert">${message}</div>
+                </c:if>
+
+                <form class="form" action="${pageContext.request.contextPath}/hr/upload" method="post" enctype="multipart/form-data">
+                    <div>
+                        <div class="label">Pays</div>
+                        <select class="select" name="country" required>
+                            <option value="" disabled selected>Choisir...</option>
+                            <option value="FRA">France (FRA)</option>
+                            <option value="CHE">Suisse (CHE)</option>
+                            <option value="SGP">Singapour (SGP)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <div class="label">Fichier PDF</div>
+                        <input class="file" type="file" name="file" required accept="application/pdf" />
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">Upload</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

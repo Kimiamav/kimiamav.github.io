@@ -1,0 +1,15 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="docs">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="doc">
+                    <xs:complexType>
+                        <xs:sequence></xs:sequence>
+                        <xs:attribute name="file" type="xs:string"/>
+                        <xs:attribute name="IDMATRIC" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapport de stage SCOR 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #eef5fb;
+      --card: #ffffff;
+      --text: #102867;
+      --text-soft: #5e6f93;
+      --blue-1: #041b88;
+      --blue-2: #2f7de8;
+      --blue-3: #5fb7d9;
+      --blue-4: #dfeeff;
+      --shadow: 0 18px 40px rgba(15, 35, 92, 0.10);
+      --shadow-hover: 0 26px 46px rgba(15, 35, 92, 0.16);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(95,183,217,0.10), transparent 25%),
+        radial-gradient(circle at top right, rgba(47,125,232,0.10), transparent 20%),
+        var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .page-shell {
+      width: min(1280px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 26px 0 80px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 40px 52px;
+      border-radius: 0 0 34px 34px;
+      background: linear-gradient(135deg, #0d2e9b 0%, #041b88 55%, #1337ac 100%);
+      color: #fff;
+      box-shadow: var(--shadow);
+      margin-bottom: 38px;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -10%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.16), transparent 20%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.10), transparent 18%),
+        linear-gradient(120deg, rgba(255,255,255,0.10), transparent 40%);
+      animation: heroGlow 10s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes heroGlow {
+      0% { transform: translateX(0) translateY(0) scale(1); }
+      50% { transform: translateX(-2%) translateY(2%) scale(1.04); }
+      100% { transform: translateX(0) translateY(0) scale(1); }
+    }
+
+    .hero-kicker {
+      margin: 0 0 12px;
+      font-size: 0.92rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      max-width: 860px;
+      margin: 18px 0 0;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .hero-tag {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.14);
+      font-size: 0.92rem;
+      font-weight: 700;
+      backdrop-filter: blur(6px);
+    }
+
+    .section {
+      margin-top: 34px;
+    }
+
+    .section-title-wrap {
+      margin-bottom: 22px;
+    }
+
+    .section-kicker {
+      margin: 0 0 8px;
+      color: #5f84df;
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0 0 10px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text);
+    }
+
+    .section-subtitle {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.7;
+      max-width: 860px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+      border: 1px solid rgba(47,125,232,0.06);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .summary-card {
+      padding: 28px 24px;
+    }
+
+    .summary-card h3 {
+      margin: 0 0 18px;
+      color: var(--text);
+      font-size: 1.55rem;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 28px;
+    }
+
+    .summary-grid a {
+      text-decoration: none;
+      color: #35517a;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .summary-grid a:hover {
+      color: var(--blue-1);
+      transform: translateX(4px);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .stat-card {
+      padding: 24px 18px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% -40% auto;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(95,183,217,0.14), transparent 70%);
+      pointer-events: none;
+    }
+
+    .stat-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+      background: linear-gradient(135deg, #eef6ff, #dce9ff);
+      color: #1f62cc;
+      font-weight: 800;
+    }
+
+    .stat-value {
+      display: block;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: #1684b7;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      color: #34476f;
+      line-height: 1.55;
+      font-size: 1rem;
+    }
+
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .activity-card {
+      overflow: hidden;
+    }
+
+    .activity-image {
+      height: 220px;
+      background: linear-gradient(135deg, #b7dcf8, #dfeeff);
+    }
+
+    .activity-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .activity-content {
+      padding: 24px;
+    }
+
+    .activity-content h3 {
+      margin: 0 0 14px;
+      font-size: 1.55rem;
+      color: var(--text);
+    }
+
+    .activity-content p {
+      margin: 0 0 18px;
+      color: var(--text-soft);
+      line-height: 1.75;
+    }
+
+    .dashboard-board {
+      padding: 24px;
+    }
+
+    .dashboard-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .dashboard-head h3 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: var(--text);
+    }
+
+    .dashboard-head span {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #1684b7;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 18px;
+    }
+
+    .mini-panel {
+      background: #f9fbff;
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: inset 0 0 0 1px rgba(47,125,232,0.06);
+    }
+
+    .mini-panel h4 {
+      margin: 0 0 14px;
+      text-align: center;
+      font-size: 1rem;
+      color: #214c9d;
+    }
+
+    .bar-chart {
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      gap: 16px;
+      height: 220px;
+      padding: 10px 6px 6px;
+    }
+
+    .bar-col {
+      width: 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: end;
+      gap: 8px;
+    }
+
+    .bar-fill {
+      width: 100%;
+      border-radius: 14px 14px 0 0;
+      background: linear-gradient(180deg, #86d2a6, #2d7c3f);
+      box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.08);
+      transform-origin: bottom;
+      transform: scaleY(0);
+    }
+
+    .bar-label {
+      font-size: 0.9rem;
+      color: #38506f;
+      font-weight: 700;
+    }
+
+    .pie-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .pie {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: conic-gradient(
+        #2f7de8 0 40%,
+        #6ab57a 40% 74%,
+        #b8d9f0 74% 100%
+      );
+      box-shadow: inset 0 0 0 26px #fff;
+    }
+
+    .legend {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .legend li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #3e5576;
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .legend-1 { background: #2f7de8; }
+    .legend-2 { background: #6ab57a; }
+    .legend-3 { background: #b8d9f0; }
+
+    .ratings {
+      display: grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .rating-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 14px;
+      padding: 12px 14px;
+      background: #f4f8fd;
+      color: #395270;
+    }
+
+    .rating-row strong {
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .kpi-card {
+      padding: 20px 16px;
+      text-align: center;
+    }
+
+    .kpi-card h5 {
+      margin: 0 0 10px;
+      color: #597091;
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    .kpi-card p {
+      margin: 0;
+      color: #1684b7;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .swot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .swot-card {
+      position: relative;
+      padding: 24px;
+      color: white;
+      overflow: hidden;
+    }
+
+    .swot-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% -25% auto;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(255,255,255,0.12), transparent 68%);
+      pointer-events: none;
+    }
+
+    .swot-card h3 {
+      margin: 0 0 14px;
+      font-size: 1.4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .swot-card ul {
+      margin: 0;
+      padding-left: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .swot-card li {
+      margin-bottom: 10px;
+      line-height: 1.65;
+    }
+
+    .swot-badge {
+      position: absolute;
+      right: 18px;
+      top: 10px;
+      font-size: 4rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.16);
+      line-height: 1;
+    }
+
+    .swot-strength { background: linear-gradient(135deg, #2f7de8, #041b88); }
+    .swot-weakness { background: linear-gradient(135deg, #5070db, #2749b8); }
+    .swot-opportunity { background: linear-gradient(135deg, #4aa9d9, #2f7de8); }
+    .swot-threat { background: linear-gradient(135deg, #8b6ee0, #5a58d6); }
+
+    .compliance-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .compliance-card {
+      padding: 22px 18px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .compliance-icon {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #dce9ff, #eef6ff);
+      color: #2f7de8;
+      font-weight: 800;
+    }
+
+    .compliance-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .compliance-card p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.65;
+    }
+
+    .missions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .mission-card {
+      padding: 24px;
+      position: relative;
+    }
+
+    .mission-number {
+      position: absolute;
+      right: 18px;
+      top: 16px;
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(47,125,232,0.14);
+      line-height: 1;
+    }
+
+    .mission-card h3 {
+      margin: 0 0 14px;
+      color: var(--text);
+      font-size: 1.35rem;
+    }
+
+    .mission-card p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.75;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .text-card {
+      padding: 24px;
+    }
+
+    .text-card h3 {
+      margin: 0 0 12px;
+      color: var(--text);
+      font-size: 1.35rem;
+    }
+
+    .text-card p {
+      margin: 0 0 14px;
+      color: var(--text-soft);
+      line-height: 1.75;
+    }
+
+    .text-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .proofs {
+      margin-top: 18px;
+    }
+
+    .proofs-title {
+      margin: 0 0 16px;
+      color: var(--text);
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .proofs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .proof-card {
+      overflow: hidden;
+    }
+
+    .proof-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(135deg, #b7dcf8, #dfeeff);
+    }
+
+    .proof-caption {
+      padding: 14px 16px 18px;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    .footer-back {
+      margin-top: 54px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 2px solid var(--blue-1);
+      color: var(--blue-1);
+      background: transparent;
+      transition: 0.22s ease;
+    }
+
+    .back-btn:hover {
+      background: var(--blue-1);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1100px) {
+      .stats-grid,
+      .activities-grid,
+      .dashboard-grid,
+      .kpi-grid,
+      .compliance-grid,
+      .missions-grid,
+      .two-col,
+      .proofs-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .stats-grid,
+      .activities-grid,
+      .dashboard-grid,
+      .kpi-grid,
+      .swot-grid,
+      .compliance-grid,
+      .missions-grid,
+      .two-col,
+      .proofs-grid,
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-shell {
+        width: min(100% - 22px, 1200px);
+      }
+
+      .hero {
+        padding: 56px 22px 42px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+
+    <header class="hero reveal">
+      <p class="hero-kicker">RAPPORT DE STAGE</p>
+      <h1>SCOR — Stage 2025</h1>
+      <p>
+        Stage de 2e année réalisé au sein de SCOR SE dans un environnement Corporate IT,
+        autour du déploiement et de l’intégration de l’application RH Lucca, en lien avec Oracle HCM,
+        les tests fonctionnels, la documentation technique et le suivi des incidents.
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">Lucca</span>
+        <span class="hero-tag">Oracle HCM</span>
+        <span class="hero-tag">Postman</span>
+        <span class="hero-tag">ServiceNow</span>
+        <span class="hero-tag">Excel</span>
+        <span class="hero-tag">SaaS</span>
+        <span class="hero-tag">Tests</span>
+        <span class="hero-tag">Documentation</span>
+      </div>
+    </header>
+
+    <section class="section reveal" id="sommaire">
+      <div class="card summary-card">
+        <h3>Sommaire</h3>
+        <div class="summary-grid">
+          <a href="#remerciements">Remerciements</a>
+          <a href="#introduction">1. Introduction</a>
+          <a href="#presentation">2. Présentation de l’entreprise</a>
+          <a href="#service">3. Présentation du service et contexte du stage</a>
+          <a href="#missions">4. Description des missions</a>
+          <a href="#competences">5. Compétences mobilisées</a>
+          <a href="#apports">6. Apports du stage</a>
+          <a href="#conclusion">7. Conclusion</a>
+          <a href="#annexes">8. Annexes</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="remerciements">
+      <div class="section-title-wrap">
+        <p class="section-kicker">OUVERTURE</p>
+        <h2 class="section-title">Remerciements</h2>
+      </div>
+
+      <article class="card text-card">
+        <p>Je tiens à remercier l’ensemble de l’équipe IT de SCOR pour son accueil, sa disponibilité et son accompagnement tout au long de mon stage.</p>
+        <p>Je remercie tout particulièrement mon tuteur, Mathieu, pour sa bienveillance, ses conseils et la confiance qu’il m’a accordée durant cette expérience.</p>
+        <p>Grâce à son suivi et à celui de l’équipe, j’ai pu évoluer dans un cadre professionnel enrichissant et formateur.</p>
+      </article>
+    </section>
+
+    <section class="section reveal" id="introduction">
+      <div class="section-title-wrap">
+        <p class="section-kicker">01</p>
+        <h2 class="section-title">Introduction</h2>
+      </div>
+
+      <article class="card text-card">
+        <p>Dans le cadre de ma seconde année de BTS Services Informatiques aux Organisations, option SLAM, j’ai réalisé un stage de sept semaines au sein de l’entreprise SCOR SE, groupe international spécialisé dans la réassurance.</p>
+        <p>Ce stage m’a permis de découvrir le fonctionnement d’un service informatique dans un grand groupe, d’évoluer dans un environnement professionnel exigeant et de participer à des projets concrets liés au déploiement et à l’intégration d’applications cloud.</p>
+        <p>J’ai notamment contribué au suivi du déploiement de l’application RH Lucca, utilisée pour la gestion des congés, des temps et des notes de frais.</p>
+        <p>Dans ce rapport, je présenterai l’entreprise SCOR, le service dans lequel j’ai été intégrée, les missions qui m’ont été confiées, les compétences mobilisées ainsi que les apports de cette expérience pour mon parcours professionnel.</p>
+      </article>
+    </section>
+
+    <section class="section reveal" id="presentation">
+      <div class="section-title-wrap">
+        <p class="section-kicker">02</p>
+        <h2 class="section-title">Présentation de l’entreprise</h2>
+        <p class="section-subtitle">
+          SCOR SE est un groupe français spécialisé dans la réassurance, avec une forte présence internationale
+          et une organisation structurée autour des métiers de l’assurance, de la donnée et des systèmes d’information.
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <article class="card stat-card">
+          <div class="stat-icon">🏢</div>
+          <span class="stat-value" data-target="1970">0</span>
+          <p class="stat-label">année de création</p>
+        </article>
+
+        <article class="card stat-card">
+          <div class="stat-icon">🌍</div>
+          <span class="stat-value" data-target="30">0</span>
+          <p class="stat-label">pays de présence</p>
+        </article>
+
+        <article class="card stat-card">
+          <div class="stat-icon">👥</div>
+          <span class="stat-value" data-target="3400">0</span>
+          <p class="stat-label">collaborateurs</p>
+        </article>
+
+        <article class="card stat-card">
+          <div class="stat-icon">💶</div>
+          <span class="stat-value" data-target="18">0</span>
+          <p class="stat-label">Md€ de chiffre d’affaires 2024</p>
+        </article>
+      </div>
+
+      <div class="two-col" style="margin-top: 22px;">
+        <article class="card text-card">
+          <h3>2.1 Fiche d’identité</h3>
+          <p>Nom : SCOR SE</p>
+          <p>Année de création : 1970</p>
+          <p>Siège social : Paris</p>
+          <p>Présence internationale : plus de 30 pays</p>
+          <p>Effectif : environ 3 400 collaborateurs</p>
+          <p>Chiffre d’affaires 2024 : plus de 18 milliards d’euros</p>
+        </article>
+
+        <article class="card text-card">
+          <h3>2.2 Organisation du système d’information</h3>
+          <p>SCOR dispose d’une Direction des Systèmes d’Information structurée en plusieurs pôles.</p>
+          <p>Certains sont dédiés aux infrastructures, à la sécurité, ou encore aux applications métiers.</p>
+          <p>Une partie de la DSI est spécialisée dans le déploiement d’applications éditeurs, souvent proposées sous forme de solutions SaaS, hébergées sur le cloud, notamment via Microsoft Azure.</p>
+        </article>
+      </div>
+
+      <div class="proofs">
+        <h3 class="proofs-title">Preuves / visuels entreprise</h3>
+        <div class="proofs-grid">
+          <article class="card proof-card">
+            <img src="assets\Preuves du projet\Preuves du projet\PhotosProjet\1.webp" alt="Preuve entreprise 3">
+            <div class="proof-caption">Photo de l’entrée du siège social de SCOR à Paris.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="service">
+      <div class="section-title-wrap">
+        <p class="section-kicker">03</p>
+        <h2 class="section-title">Présentation du service et contexte du stage</h2>
+      </div>
+
+      <article class="card text-card">
+        <p>J’ai intégré une équipe IT encadrée par Mathieu, dont la mission principale est le déploiement et l’intégration d’applications éditeurs utilisées par différents services internes, notamment les ressources humaines, la finance et la conformité.</p>
+        <p>L’objectif de l’équipe est d’assurer l’intégration de nouvelles solutions cloud au système d’information de SCOR tout en respectant des contraintes fortes de sécurité, de performance et de conformité réglementaire, notamment le RGPD.</p>
+        <p>En tant que stagiaire, mon rôle a été d’assister l’équipe projet sur des tâches de suivi, de configuration, de tests et de documentation, principalement dans le cadre du projet de déploiement de l’application RH Lucca.</p>
+      </article>
+    </section>
+
+    <section class="section reveal" id="missions">
+      <div class="section-title-wrap">
+        <p class="section-kicker">04</p>
+        <h2 class="section-title">Description des missions</h2>
+        <p class="section-subtitle">
+          Participation au déploiement et à l’intégration de l’application RH Lucca, dans un contexte de projet SaaS connecté au SIRH Oracle HCM.
+        </p>
+      </div>
+
+      <div class="two-col">
+        <article class="card text-card">
+          <h3>4.1 Mission principale : déploiement de l’application RH Lucca</h3>
+          <p>Lucca est une solution SaaS utilisée pour la gestion des congés, des temps de travail et des notes de frais.</p>
+          <p>Elle devait être intégrée au SIRH principal de SCOR, Oracle HCM, afin d’assurer la cohérence des données RH.</p>
+          <p>L’objectif de ma mission était d’assister l’équipe projet dans le déploiement et l’intégration de Lucca, en participant aux différentes étapes fonctionnelles et techniques du projet.</p>
+        </article>
+
+        <article class="card text-card">
+          <h3>4.2 Outils utilisés</h3>
+          <p>Postman : tests des API d’intégration</p>
+          <p>Excel : gestion des fichiers de mapping de données</p>
+          <p>Microsoft Teams / Outlook : communication et suivi projet</p>
+          <p>ServiceNow : gestion des tickets et incidents</p>
+        </article>
+      </div>
+
+      <div class="missions-grid" style="margin-top: 20px;">
+        <article class="card mission-card">
+          <span class="mission-number">1</span>
+          <h3>Analyse du périmètre fonctionnel</h3>
+          <p>Étude de l’application Lucca et compréhension de son usage dans le cadre RH.</p>
+        </article>
+
+        <article class="card mission-card">
+          <span class="mission-number">2</span>
+          <h3>Mapping des données</h3>
+          <p>Participation au mapping entre Lucca et Oracle HCM pour assurer la cohérence des données.</p>
+        </article>
+
+        <article class="card mission-card">
+          <span class="mission-number">3</span>
+          <h3>Configuration de l’application</h3>
+          <p>Paramétrage des utilisateurs, des droits et des workflows dans Lucca.</p>
+        </article>
+
+        <article class="card mission-card">
+          <span class="mission-number">4</span>
+          <h3>Tests fonctionnels</h3>
+          <p>Réalisation de scénarios utilisateurs et validation fonctionnelle de la solution.</p>
+        </article>
+
+        <article class="card mission-card">
+          <span class="mission-number">5</span>
+          <h3>Documentation</h3>
+          <p>Rédaction de documents techniques et fonctionnels pour le projet.</p>
+        </article>
+
+        <article class="card mission-card">
+          <span class="mission-number">6</span>
+          <h3>Support et incidents</h3>
+          <p>Aide au support utilisateur lors du lancement et suivi des incidents via ServiceNow.</p>
+        </article>
+      </div>
+
+      <div class="proofs">
+        <h3 class="proofs-title">Preuves / captures projet Lucca</h3>
+        <div class="proofs-grid">
+          <article class="card proof-card">
+            <img src="assets\Annexes\lucca1.png" alt="Preuve mission 1">
+            <div class="proof-caption">Exemple de support, capture d’écran ou document lié au projet Lucca.</div>
+          </article>
+
+          <article class="card proof-card">
+            <img src="assets\documents\Mapping.PNG" alt="Preuve mission 2">
+            <div class="proof-caption">Exemple de fichier de mapping de données entre Lucca et Oracle HCM.</div>
+          </article>
+
+          <article class="card proof-card">
+            <img src="assets\Annexes\2025-06-26_17-38-16.PNG" alt="Preuve mission 3">
+            <div class="proof-caption">Exemple de documentation ou d’outil utilisé pendant le stage.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="competences">
+      <div class="section-title-wrap">
+        <p class="section-kicker">05</p>
+        <h2 class="section-title">Compétences mobilisées</h2>
+      </div>
+
+      <div class="compliance-grid">
+        <article class="card compliance-card">
+          <div class="compliance-icon">C4</div>
+          <h3>Participer à un projet</h3>
+          <p>Participation aux réunions et au suivi du projet Lucca avec l’équipe.</p>
+        </article>
+
+        <article class="card compliance-card">
+          <div class="compliance-icon">C1</div>
+          <h3>Analyser les besoins</h3>
+          <p>Échanges avec l’équipe RH et compréhension des besoins fonctionnels.</p>
+        </article>
+
+        <article class="card compliance-card">
+          <div class="compliance-icon">C3</div>
+          <h3>Tester et valider</h3>
+          <p>Réalisation de tests fonctionnels et scénarios utilisateurs.</p>
+        </article>
+
+        <article class="card compliance-card">
+          <div class="compliance-icon">DOC</div>
+          <h3>Documenter</h3>
+          <p>Rédaction de guides, procédures et contenus de suivi projet.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="apports">
+      <div class="section-title-wrap">
+        <p class="section-kicker">06</p>
+        <h2 class="section-title">Apports du stage</h2>
+      </div>
+
+      <div class="two-col">
+        <article class="card text-card">
+          <h3>6.1 Apports techniques</h3>
+          <p>Compréhension des architectures SaaS et des intégrations applicatives.</p>
+          <p>Découverte du fonctionnement d’un SIRH.</p>
+          <p>Utilisation d’API REST via Postman.</p>
+          <p>Mise en pratique des tests fonctionnels et de la documentation technique.</p>
+        </article>
+
+        <article class="card text-card">
+          <h3>6.2 Apports professionnels</h3>
+          <p>Travail en équipe projet dans un contexte international.</p>
+          <p>Communication professionnelle, parfois en anglais.</p>
+          <p>Rigueur, organisation et respect des délais.</p>
+          <p>Adaptation aux contraintes métiers et techniques.</p>
+          <p>Ce stage a renforcé mon intérêt pour les métiers liés au déploiement de solutions applicatives et à la gestion de projets informatiques.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="conclusion">
+      <div class="section-title-wrap">
+        <p class="section-kicker">07</p>
+        <h2 class="section-title">Conclusion</h2>
+      </div>
+
+      <article class="card text-card">
+        <p>Ce stage chez SCOR m’a permis de découvrir un environnement professionnel structuré et exigeant, au sein d’un grand groupe international.</p>
+        <p>J’ai pu m’intégrer à une équipe projet et contribuer concrètement au déploiement d’une application utilisée à l’échelle de l’entreprise.</p>
+        <p>Cette expérience m’a permis d’acquérir des compétences techniques et méthodologiques solides, tout en confirmant mon projet professionnel dans le domaine des systèmes d’information et des solutions applicatives.</p>
+        <p>Je remercie à nouveau l’ensemble de l’équipe pour cette opportunité enrichissante.</p>
+      </article>
+    </section>
+
+    <section class="section reveal" id="annexes">
+      <div class="section-title-wrap">
+        <p class="section-kicker">08</p>
+        <h2 class="section-title">Annexes</h2>
+      </div>
+
+      <article class="card text-card">
+        <p>A1 : Organigramme du service</p>
+        <p>A2 : Planning du projet Lucca</p>
+        <p>A3 : Exemple de scénario de test</p>
+        <p>A4 : Exemple de mapping de champs (données anonymisées)</p>
+      </article>
+    </section>
+
+    <div class="footer-back reveal">
+      <a href="projects.html" class="back-btn">← Retour aux projets</a>
+      <a href="bureau.html" class="back-btn">Retour au bureau</a>
+    </div>
+
+  </div>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    const counters = document.querySelectorAll('.stat-value');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        const el = entry.target;
+        const target = parseInt(el.dataset.target, 10);
+        let current = 0;
+        const increment = Math.max(1, Math.ceil(target / 70));
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          el.textContent = current.toLocaleString('fr-FR');
+        }, 22);
+
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    const bars = document.querySelectorAll('.bar-fill');
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const bar = entry.target;
+        const h = bar.dataset.height;
+        bar.style.transition = 'transform 0.9s ease';
+        bar.style.transform = 'scaleY(1)';
+        bar.style.height = h;
+        barObserver.unobserve(bar);
+      });
+    }, { threshold: 0.35 });
+
+    bars.forEach(bar => {
+      bar.style.height = bar.dataset.height;
+      barObserver.observe(bar);
+    });
+  </script>
+</body>
+</html>

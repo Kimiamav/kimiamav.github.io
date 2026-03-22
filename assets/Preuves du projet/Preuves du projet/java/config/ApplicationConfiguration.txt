@@ -1,0 +1,46 @@
+package com.scor.peopledoc.config;
+
+import com.scor.peopledoc.service.BulSalService;
+import com.scor.peopledoc.service.TransformService;
+import com.scor.peopledoc.ws.ScheduleServiceConsumer;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+
+@Configuration(proxyBeanMethods = false)
+@Slf4j
+@EnableConfigurationProperties({ApplicationProperties.class})
+@AllArgsConstructor(onConstructor_ = {@Autowired})
+public class ApplicationConfiguration {
+    @Bean
+    public TransformService transformService(ApplicationProperties applicationProperties, BulSalService bulSalService){
+        return new TransformService(applicationProperties, bulSalService);
+    }
+
+    @Bean
+    public Jaxb2Marshaller marshaller(){
+        var jaxb2Marshaller = new Jaxb2Marshaller();
+        log.debug("jaxb2Marshaller package : "+"com.scor.peopledoc.wsdl");
+        jaxb2Marshaller.setPackagesToScan("com.scor.peopledoc.wsdl");
+        return jaxb2Marshaller;
+    }
+
+    @Bean
+    public ScheduleServiceConsumer scheduleServiceConsumer(Jaxb2Marshaller marshaller, ApplicationProperties applicationProperties) {
+        var scheduleServiceConsumer = new ScheduleServiceConsumer(applicationProperties);
+        scheduleServiceConsumer.setDefaultUri(applicationProperties.getBulSalServiceUrl() + "/xmlpserver/services/v2/ScheduleService");
+        scheduleServiceConsumer.setMarshaller(marshaller);
+        scheduleServiceConsumer.setUnmarshaller(marshaller);
+
+        return scheduleServiceConsumer;
+    }
+
+    @Bean
+    public BulSalService bulSalService(ScheduleServiceConsumer scheduleServiceConsumer){
+        return new BulSalService(scheduleServiceConsumer);
+    }
+}

@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    active:
+      - ${SCORAPP_ENV:DEV_FRA_WIN}
+      - dev

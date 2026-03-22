@@ -1,0 +1,255 @@
+{
+  "main": {
+    "id": "b3442cc7339e57c3",
+    "type": "split",
+    "children": [
+      {
+        "id": "fcfe486af5ff1369",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "202c362b12a3fc4c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Stage 2/S1/XSD.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "XSD"
+            }
+          },
+          {
+            "id": "c6b9f10a12084dbb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Stage 2/Veille Technologique.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Veille Technologique"
+            }
+          },
+          {
+            "id": "81b1b08a75f99fee",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "Images/Pasted image 20260106171259.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20260106171259"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4a3493dcd439de13",
+    "type": "split",
+    "children": [
+      {
+        "id": "2898db3c57e6e45d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "454ef77f02375469",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorateur de fichiers"
+            }
+          },
+          {
+            "id": "16d77027bf405445",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Rechercher"
+            }
+          },
+          {
+            "id": "17a5e0c008f7d347",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Signets"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "6555c89bf919886b",
+    "type": "split",
+    "children": [
+      {
+        "id": "51c6f9a6f8e20aaf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "831d608b0e1ed176",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Stage 2/S3/1) READ ME sur Adp2PeopleDoc.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Rétrolien pour 1) READ ME sur Adp2PeopleDoc"
+            }
+          },
+          {
+            "id": "ea89f6378281d31c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Objectif Stage 2/L'Objectif du projet.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Liens sortants de L'Objectif du projet"
+            }
+          },
+          {
+            "id": "2c4505532df97430",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Mots-clés"
+            }
+          },
+          {
+            "id": "919588ec16247cb0",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Toutes les propriétés"
+            }
+          },
+          {
+            "id": "0f44712adec9f7b6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Objectif Stage 2/L'Objectif du projet.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Plan de L'Objectif du projet"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Ouvrir le sélecteur rapide": false,
+      "graph:Ouvrir la vue graphique": false,
+      "canvas:Créer une nouvelle toile": false,
+      "daily-notes:Ouvrir la note quotidienne": false,
+      "templates:Insérer le modèle": false,
+      "command-palette:Ouvrir la palette de commandes": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "454ef77f02375469",
+  "lastOpenFiles": [
+    "Images/Upload interface.png",
+    "Images/Result interface.png",
+    "Images/Pasted image 20260120110211.png",
+    "Images/Pasted image 20260115134451.png",
+    "Images/Pasted image 20260115110710.png",
+    "Images/Pasted image 20260113150446.png",
+    "Images/Pasted image 20260113145919.png",
+    "Images/Pasted image 20260106171259.png",
+    "Stage 2/Veille Technologique.md",
+    "Stage 2/S5/Interface.md",
+    "Pasted image 20260127114303.png",
+    "Stage 2/S3/1) READ ME sur Adp2PeopleDoc.md",
+    "Stage 2/Sans titre/desktop.ini",
+    "Stage 2/S5",
+    "Stage 2/S4/CORRECTION POSSIBLE.md",
+    "Stage 2/Portfolio(Veille informatique ).md",
+    "Stage 2/L'Objectif du projet.md",
+    "Stage 2/S4",
+    "Révision/CEJM/Année 1 Mots clés.md",
+    "Maquette",
+    "Nouveau dossier",
+    "Stage 2/S3/19 - 20.md",
+    "Révision/Sans titre.md",
+    "Révision/CEJM",
+    "Révision",
+    "Stage 2/S3",
+    "Stage 2/S2/JAVA.md",
+    "Stage 2/S2/Keystore.md",
+    "Stage 2/S2/DEBUG.md",
+    "Stage 2/S2/Certificats.md",
+    "Stage 2/S1/TOMCAT.md",
+    "Stage 2/S2",
+    "Stage 2/S1/LA STRUCTURE EXACTE DU DOCUMENT.md",
+    "Stage 2/S1/Création d'un projet de distribution.md",
+    "Stage 2/S1/MAVEN.md",
+    "Stage 2/S1/Semaine ( 05- 09).md",
+    "Stage 2/S1/XSD.md",
+    "Stage 2/S1",
+    "2026-01-06.md"
+  ]
+}

@@ -1,158 +1,160 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Projets – Kimia Mavinga</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/style.css" />
-  </head>
-  <body data-page="projects">
-    <header>
-      <div class="wrapper navbar">
-        <div class="logo">Kimia <span>Mavinga</span></div>
-        <nav class="nav-links">
-          <a href="index.html" data-page="home">Accueil</a>
-          <a href="about.html" data-page="about">À propos</a>
-          <a href="projects.html" data-page="projects">Projets</a>
-          <a href="stages.html" data-page="stages">Stages</a>
-          <a href="contact.html" data-page="contact">Contact</a>
-        </nav>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets - Portfolio Kimia Mavinga</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="projects-page">
+  <main class="projects-wrapper">
 
-    <main class="section">
-      <div class="wrapper">
-        <div class="section-header">
-          <p class="section-kicker">Réalisations</p>
-          <h1 class="section-title">Mes projets</h1>
+    <section class="projects-hero">
+      <p class="projects-kicker">PORTFOLIO</p>
+      <h1>Mes projets</h1>
+      <p class="projects-intro">
+        Cette page regroupe mes projets scolaires, mes projets personnels
+        et mes expériences réalisées en stage.
+      </p>
+    </section>
+
+    <!-- PROJETS SCOLAIRES -->
+    <section class="school-section">
+      <div class="section-heading">
+        <h2>Projets scolaires</h2>
+        <p>
+          Projets réalisés dans le cadre du BTS SIO SLAM, autour du développement
+          web, desktop et de la modélisation d’applications.
+        </p>
+      </div>
+
+      <div class="school-grid">
+        <article class="school-card">
+          <div class="school-icon">🐘</div>
+          <h3>GestTravaux Pro<br>Version PHP</h3>
+          <p>
+            Application web Symfony pour la gestion de chantiers, devis,
+            appels d’offres et suivi des travaux.
+          </p>
+          <a href="GESTRAVAUXWeb.html" class="school-link">Voir plus +</a>
+        </article>
+
+        <article class="school-card">
+          <div class="school-icon">☕</div>
+          <h3>GestTravaux Pro<br>Version Java</h3>
+          <p>
+            Application desktop JavaFX avec modélisation UML, gestion des devis
+            et base de données MySQL.
+          </p>
+          <a href="GESTRAVAUXJava.html" class="school-link">Voir plus +</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJETS PERSONNELS -->
+    <section class="personal-section">
+      <div class="personal-panel">
+        <div class="section-heading section-heading-dark">
+          <h2>Projets personnels</h2>
+          <p>
+            Espaces de test, d’apprentissage et d’expérimentation en dehors
+            des projets scolaires, pour pratiquer le front-end et enrichir mon portfolio.
+          </p>
         </div>
 
-        <div class="projects-grid">
-          <!-- PROJET SLAM : GESTTRAVAUX PRO -->
-          <article class="card project-card">
-            <h3>GestTravaux Pro – Gestion de travaux immobiliers</h3>
-            <p class="project-meta">
-              Rôle : Développeuse – Projet SLAM 2<sup>e</sup> année (2025–2026)
-            </p>
+        <div class="personal-grid">
+          <article class="personal-card">
+            <div class="personal-badge">2024</div>
+            <div class="personal-icon">🎯</div>
+            <h3>Mini-projet d’apprentissage</h3>
             <p>
-              Application complète pour la société fictive <strong>IMMOSYNC</strong>, permettant
-              de gérer les chantiers de travaux immobiliers (création de chantier,
-              appels d’offres, devis, suivi des travaux, réception, rapports).
+              Petit projet personnel pour apprendre les bases du développement
+              web front-end.
             </p>
-            <ul style="margin-top: 0.7rem; font-size: 0.9rem">
-              <li>
-                <strong>Architecture hybride</strong> :
-                application desktop Java pour les gestionnaires + application web Symfony
-                (inspecteurs, entrepreneurs, propriétaires).
-              </li>
-              <li>
-                <strong>Base de données MySQL</strong> unique partagée (Hibernate côté Java,
-                Doctrine côté Symfony).
-              </li>
-              <li>
-                Gestion du cycle de vie complet des chantiers, comparaison de devis,
-                suivi d’avancement et génération de rapports PDF.
-              </li>
-              <li>
-                PWA pour les inspecteurs sur le terrain (photos, diagnostics, documents).
-              </li>
-            </ul>
-
-            <div class="project-tags">
-              <span class="tag">Symfony 7</span>
-              <span class="tag">Java / JavaFX</span>
-              <span class="tag">MySQL</span>
-              <span class="tag">Hibernate</span>
-              <span class="tag">Doctrine ORM</span>
-              <span class="tag">PWA</span>
-              <span class="tag">Projet SLAM</span>
-            </div>
-
-            <div style="margin-top: 0.9rem; font-size: 0.85rem">
-              <!-- Remplace # par ton lien GitHub quand tu l’auras -->
-              <a href="#" target="_blank">Voir le dépôt GitHub (à venir)</a>
-            </div>
+            <a href="http://127.0.0.1:3004/index.html?serverWindowId=05cf7aee-9323-4dcf-9cab-69f0b37661ad" class="personal-link">Voir le site</a>
           </article>
 
-          <!-- PROJET 2 : Déploiement LUCCA -->
-          <article class="card project-card">
-            <h3>Déploiement de la solution RH Lucca</h3>
-            <p class="project-meta">
-              Rôle : Stagiaire gestion de projet IT – SCOR (2025)
-            </p>
+          <article class="personal-card">
+            <div class="personal-badge">2024</div>
+            <div class="personal-icon">🌐</div>
+            <h3>Maquettes et interfaces</h3>
             <p>
-              Participation au déploiement de la solution SaaS <strong>Lucca</strong> et à
-              son intégration avec le SIRH <strong>Oracle HCM</strong> au sein d’un groupe
-              international de réassurance.
+              Premiers essais de design d’interfaces, mise en page et organisation
+              visuelle de contenu.
             </p>
-            <ul style="margin-top: 0.7rem; font-size: 0.9rem">
-              <li>Analyse du périmètre fonctionnel de l’application.</li>
-              <li>Mapping des données entre Lucca et Oracle HCM.</li>
-              <li>Configuration et tests fonctionnels (utilisateurs pilotes).</li>
-              <li>Rédaction de documentation utilisateur et technique.</li>
-            </ul>
-            <div class="project-tags">
-              <span class="tag">SaaS</span>
-              <span class="tag">RH</span>
-              <span class="tag">Tests</span>
-              <span class="tag">Documentation</span>
-            </div>
+            <a href="#file:///C:/Users/mavin/Desktop/BTS%20SIO%20Ann%C3%A9e%201/SIOHTML/Tableau%20personnalise.html" class="personal-link">Voir plus</a>
           </article>
 
-          <!-- PROJET 3 : Gestion de tâches (scolaire) -->
-          <article class="card project-card">
-            <h3>Application de gestion de tâches</h3>
-            <p class="project-meta">Rôle : Projet scolaire – BTS SIO SLAM</p>
+          <article class="personal-card">
+            <div class="personal-badge">2024</div>
+            <div class="personal-icon">🧪</div>
+            <h3>Tests HTML / CSS / JS</h3>
             <p>
-              Application web permettant aux utilisateurs de créer, modifier et suivre
-              des tâches avec une gestion des comptes et des droits.
+              Exercices pratiques pour manipuler les bases du responsive,
+              des composants et de l’interaction.
             </p>
-            <ul style="margin-top: 0.7rem; font-size: 0.9rem">
-              <li>CRUD complet sur une base de données SQL.</li>
-              <li>Authentification et gestion de rôles simples.</li>
-              <li>Interface responsive en HTML / CSS.</li>
-            </ul>
-            <div class="project-tags">
-              <span class="tag">PHP</span>
-              <span class="tag">SQL</span>
-              <span class="tag">HTML / CSS</span>
-            </div>
-            <div style="margin-top: 0.9rem; font-size: 0.85rem">
-              <a href="#" target="_blank">Voir le projet sur GitHub (à venir)</a>
-            </div>
+            <a href="#file:///C:/Users/mavin/Desktop/BTS%20SIO%20Ann%C3%A9e%201/TP1%20-%20CSS%20-%20Positionnement/Exercice2/Exo2.html" class="personal-link">Voir plus</a>
           </article>
 
-          <!-- PROJET 4 : Mini appli Java -->
-          <article class="card project-card">
-            <h3>Mini-application Java (projet perso)</h3>
-            <p class="project-meta">Rôle : Projet personnel</p>
+          <article class="personal-card">
+            <div class="personal-badge">2024</div>
+            <div class="personal-icon">✨</div>
+            <h3>Expérimentations portfolio</h3>
             <p>
-              Application Java console permettant de manipuler des listes (ajout,
-              tri, recherche) pour s’entraîner à la programmation orientée objet.
+              Prototypes visuels, idées de navigation et essais de styles
+              pour construire mon identité web.
             </p>
-            <ul style="margin-top: 0.7rem; font-size: 0.9rem">
-              <li>Utilisation de classes, objets et collections.</li>
-              <li>Gestion des entrées utilisateurs et des erreurs.</li>
-            </ul>
-            <div class="project-tags">
-              <span class="tag">Java</span>
-              <span class="tag">POO</span>
-            </div>
+            <a href="#" class="personal-link">Voir plus</a>
           </article>
         </div>
       </div>
-    </main>
+    </section>
 
-    <footer>
-      <div class="wrapper">
-        © 2025 – Kimia Mavinga · Portfolio BTS SIO SLAM
+    <!-- PROJETS PROFESSIONNELS -->
+    <section class="pro-section">
+      <div class="section-heading">
+        <h2>Projets professionnels</h2>
+        <p>
+          Expériences en entreprise et missions réalisées pendant mes stages.
+        </p>
       </div>
-    </footer>
 
-    <script src="assets/js/main.js"></script>
-  </body>
+      <div class="pro-grid">
+        <article class="pro-card">
+          <div class="pro-year">Janvier 2026</div>
+          <h3>🏢 Stage – SCOR</h3>
+          <p class="pro-subtitle">5 semaines · Java, XML et automatisation PeopleDoc</p>
+          <ul>
+            <li>Compréhension de l’architecture du moteur de conversion</li>
+<li>Validation et traitement de fichiers XML / XSD</li>
+<li>Développement backend avec Java, Spring Boot et JPA</li>
+<li>Réflexion sur l’évolution vers une interface web sécurisée</li>
+          </ul>
+          <a href="rapport-stage-scor2026.html" class="pro-link">Rapport de stage</a>
+        </article>
+
+        <article class="pro-card">
+          <div class="pro-year">Mai 2025</div>
+          <h3>🏢 Stage – SCOR
+          </h3>
+          <p class="pro-subtitle">6 semaines · Projet RH cloud, Lucca et Oracle HCM</p>
+          <ul>
+            <li>Suivi du déploiement de l’application RH Lucca</li>
+<li>Participation au mapping entre Lucca et Oracle HCM</li>
+<li>Tests fonctionnels et scénarios utilisateurs</li>
+<li>Rédaction de documentation et support projet</li>
+          </ul>
+          <a href="rapport-stage-scor2025.html" class="pro-link">Rapport de stage</a>
+        </article>
+      </div>
+    </section>
+
+    <div class="projects-back">
+      <a href="bureau.html" class="projects-back-link">← Retour au bureau</a>
+    </div>
+  </main>
+</body>
 </html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bureau - Portfolio Kimia Mavinga</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* IMPORTANT : Puisque "More Sugar" n'est pas sur Google Fonts, 
+       tu dois avoir le fichier .ttf ou .otf dans ton dossier.
+    */
+    @font-face {
+        font-family: 'More Sugar';
+        src: url('assets/fonts/MoreSugar-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    /* Application au titre spécifique */
+    .custom-bureau-title h1 {
+        font-family: 'More Sugar', cursive;
+        font-size: 9.5rem; /* Ajuste la taille selon ton envie */
+        color: #ffffff;       /* Ta couleur de texte */
+        margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body class="desktop-page custom-bureau-page">
+  <main class="custom-bureau">
+
+    <header class="custom-bureau-title">
+      <h1>P  o  r  t  f  o  l  i  o</h1>
+    </header>
+
+    <a class="custom-folder custom-folder-projects" href="projects.html">
+      <span class="custom-folder-icon">📁</span>
+      <span class="custom-folder-label">Projets</span>
+    </a>
+
+    <a class="custom-folder custom-folder-formations" href="formations.html">
+      <span class="custom-folder-icon">📁</span>
+      <span class="custom-folder-label">Formation</span>
+    </a>
+
+    <a class="custom-folder custom-folder-competences" href="competences.html">
+      <span class="custom-folder-icon">📁</span>
+      <span class="custom-folder-label">Compétences</span>
+    </a>
+
+    <a class="custom-folder custom-folder-contact" href="contact.html">
+      <span class="custom-folder-icon">📁</span>
+      <span class="custom-folder-label">Contact</span>
+    </a>
+
+    <section class="custom-about-card" aria-label="À propos">
+      <div class="custom-photo-wrap">
+        <div class="custom-photo-ring">
+          <img src="assets\images\KimRond.jpeg" alt="Photo de Kimia" class="custom-photo">
+        </div>
+      </div>
+
+      <div class="custom-about-content">
+        <h2>KIMIA <span>MAVINGA</span></h2>
+
+        <p>
+          je suis étudiante en BTS SIO, option
+          SLAM. Je me suis spécialisé dans le
+          développement d’application et la gestion
+          de base de données.
+        </p>
+
+        <p>
+          Bienvenue dans mon portfolio, où je
+          regroupe mes projets, mes compétences
+          techniques et mon évolution
+        </p>
+
+        <div class="custom-social-bubbles">
+  <a class="custom-round-btn" href="https://github.com/Kimiamav" target="_blank">
+    <img src="assets\documents\github.jpg" alt="GitHub">
+  </a>
+
+  <a class="custom-round-btn" href="https://www.linkedin.com/in/ton-profil" target="_blank">
+    <img src="assets\documents\linkedin.jpg" alt="LinkedIn">
+  </a>
+
+  <a class="custom-round-btn" href="mailto:mavingakimia@gmail.com">
+    <img src="assets\documents\gmail.jpg" alt="Mail">
+  </a>
+</div>
+
+          <div class="custom-action-buttons">
+            <a class="custom-pill-btn" href="assets/documents/Kimia MAVINGA - CV - Stage 2026.pdf" download>
+              Télécharger mon CV
+            </a>
+            <a class="custom-pill-btn" href="projects.html">
+              Voir mes projets
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <p class="desktop-toast" id="desktop-toast" aria-live="polite"></p>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

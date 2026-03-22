@@ -1,127 +1,44 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Portfolio – Kimia Mavinga</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/style.css" />
-  </head>
-  <body data-page="home">
-    <header>
-      <div class="wrapper navbar">
-        <div class="logo">Kimia <span>Mavinga</span></div>
-        <nav class="nav-links">
-          <a href="index.html" data-page="home">Accueil</a>
-          <a href="about.html" data-page="about">À propos</a>
-          <a href="projects.html" data-page="projects">Projets</a>
-          <a href="stages.html" data-page="stages">Stages</a>
-          <a href="contact.html" data-page="contact">Contact</a>
-        </nav>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Kimia Mavinga</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="welcome-page">
+  <main class="phone-shell">
+    <div class="phone-screen animated-screen">
 
-    <main>
-      <section class="wrapper hero">
-        <div class="hero-text">
-          <h1>
-            Portfolio<br />
-            <span>Kimia&nbsp;Mavinga</span>
-          </h1>
-          <p class="hero-title">Etudiante en Developpement – BTS SIO option SLAM</p>
-          <p class="hero-tagline">
-            Bienvenue sur mon portfolio professionnel. Je suis étudiante en
-            deuxième année de BTS SIO – spécialité SLAM, passionnée par le
-            développement d’applications et le déploiement de solutions cloud.
-          </p>
-
-          <div class="hero-actions">
-            <a href="projects.html" class="btn">Voir mes projets</a>
-            <a href="documents/Kimia MAVINGA - CV - Stage 2026.pdf" class="btn btn-outline" target="_blank"
-              >Télécharger mon CV</a
-            >
-          </div>
-
-          <div class="hero-meta">
-            <span>BTS SIO – ORT Daniel Mayer</span>
-            <span>Basée en région parisienne</span>
-          </div>
+      <header class="phone-status">
+        <div class="status-left">
+          <span class="signal"></span>
+          <span class="mail-icon">✉</span>
         </div>
 
-        <div class="hero-photo-wrapper">
-          <div class="hero-card">
-            <img src="assets/img/photo 2.jpg" alt="Photo de Kimia Mavinga" />
-            <div class="hero-card-label">
-              Kimia Mavinga<br />
-              Étudiante en BTS SIO SLAM 
-            </div>
-          </div>
-          <div class="hero-floating-badge">
-            BTS SIO<br />
-            SLAM
-          </div>
+        <div class="status-right">
+          <span id="phone-time">10:34</span>
+          <span class="battery"></span>
         </div>
+      </header>
+
+      <section class="welcome-content">
+        <h1>BIENVENUE SUR<br>MON PORTFOLIO</h1>
+        <a class="start-button game-start" href="bureau.html" id="start-transition">Start</a>
       </section>
 
-      <section class="section">
-        <div class="wrapper grid-2">
-          <div>
-            <div class="section-header">
-              <p class="section-kicker">À propos</p>
-              <h2 class="section-title">Qui suis-je&nbsp;?</h2>
-            </div>
-            <p>
-              Je m’appelle Kimia Mavinga et je prépare un BTS Services
-              Informatiques aux Organisations – option SLAM. J’aime transformer
-              des besoins métiers en solutions numériques concrètes, qu’il
-              s’agisse d’applications web, de bases de données ou d’outils
-              cloud.
-            </p>
-            <div class="chips">
-              <span class="chip">Java</span>
-              <span class="chip">PHP</span>
-              <span class="chip">SQL</span>
-              <span class="chip">HTML &amp; CSS</span>
-              <span class="chip">GitHub</span>
-              <span class="chip">Postman</span>
-            </div>
-          </div>
+      <footer class="phone-footer">
+        <span>Menu</span>
+        <span>KimiaM</span>
+        <span>Back</span>
+      </footer>
+    </div>
+  </main>
 
-          <div class="card">
-            <h3 style="margin-bottom: 0.7rem">Ce que je recherche</h3>
-            <p style="font-size: 0.95rem; color: #000000">
-              Un stage en développement ou en gestion de projet IT pour mettre
-              en pratique mes compétences, contribuer à des projets réels et
-              renforcer mon expérience dans le déploiement de solutions.
-            </p>
-            <div class="download-links">
-              <a
-                href="documents/Kimia MAVINGA lettre de motivation.pdf"
-                target="_blank"
-                class="btn btn-outline"
-                >Lettre de motivation</a
-              >
-              <a
-                href="documents/Rapport de Stage 1.pdf"
-                target="_blank"
-                class="btn btn-outline"
-                >Rapport de stage SCOR</a
-              >
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="wrapper">
-        © 2025 – Kimia Mavinga · Portfolio BTS SIO SLAM
-      </div>
-    </footer>
-
-    <script src="assets/js/main.js"></script>
-  </body>
+  <script src="js/main.js"></script>
+  <div class="console-shutdown" id="console-shutdown"></div>
+</body>
 </html>

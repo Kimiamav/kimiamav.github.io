@@ -1,0 +1,41 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="docs">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="doc">
+                    <xs:complexType>
+                        <xs:sequence></xs:sequence>
+                        <xs:attribute name="file" type="xs:string"/>
+                        <xs:attribute name="nb_pages" type="xs:int"/>
+                        <xs:attribute name="IDMATRIC" type="xs:string"/>
+                        <xs:attribute name="IDBULLETIN" type="xs:string"/>
+                        <xs:attribute name="IDREFDOS" type="xs:string"/>
+                        <xs:attribute name="IDNOMEMP" type="xs:string"/>
+                        <xs:attribute name="IDMASSIF" type="xs:string"/>
+                        <xs:attribute name="IDENCART" type="xs:string"/>
+                        <xs:attribute name="IDCODPGE" type="xs:string"/>
+                        <xs:attribute name="IDNMETAT" type="xs:int"/>
+                        <xs:attribute name="IDMODEDT" type="xs:string"/>
+                        <xs:attribute name="IDLBETAT" type="xs:string"/>
+                        <xs:attribute name="IDCODSTE" type="xs:string"/>
+                        <xs:attribute name="IDHABILI" type="xs:string"/>
+                        <xs:attribute name="IDNUMRSS" type="xs:string"/>
+                        <xs:attribute name="IDMATRRH" type="xs:string"/>
+                        <xs:attribute name="IDCRIT01" type="xs:string"/>
+                        <xs:attribute name="IDCRIT02" type="xs:string"/>
+                        <xs:attribute name="IDCRIT03" type="xs:string"/>
+                        <xs:attribute name="IDCRIT04" type="xs:string"/>
+                        <xs:attribute name="IDCRIT05" type="xs:string"/>
+                        <xs:attribute name="IDCIND01" type="xs:string"/>
+                        <xs:attribute name="IDCIND02" type="xs:string"/>
+                        <xs:attribute name="IDCIND03" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="pac" type="xs:string"/>
+            <xs:attribute name="perdpai" type="xs:string"/>
+            <xs:attribute name="nb_pages" type="xs:int"/>
+            <xs:attribute name="nb_bulls" type="xs:int"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
