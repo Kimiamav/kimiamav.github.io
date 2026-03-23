@@ -2154,3 +2154,54 @@ body {
     padding-top: 42px;
   }
 }
+/* =========================
+   BOUTON TABLEAU COMPÉTENCES
+========================= */
+
+.competences-tableau-btn-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.competences-tableau-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 26px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #041b88, #2f7de8);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 10px 24px rgba(4, 27, 136, 0.2);
+  transition: all 0.25s ease;
+}
+
+.competences-tableau-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 16px 30px rgba(4, 27, 136, 0.28);
+}
+.proof-box {
+  margin-top: 16px;
+  height: 240px;
+  border-radius: 22px;
+  border: 2px dashed rgba(47,125,232,0.28);
+  background: linear-gradient(135deg, rgba(223,238,255,0.8), rgba(255,255,255,0.85));
+  overflow: hidden;
+  padding: 0;
+}
+
+.proof-box a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.proof-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
